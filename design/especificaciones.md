@@ -50,14 +50,14 @@ Valores extraídos de `figma-drafts/Frame.pdf` (estado por defecto) y `figma-dra
 
 ## Hovers (`Container.pdf`)
 
-| Elemento | Cambio                                                                                                                |
-| -------- | --------------------------------------------------------------------------------------------------------------------- |
-| Wordmark | La "a" pasa a lima, rota −6° sobre su origen y se desplaza (−8,9; −14) px; la "x" y la "i" se corren −26,5 y −30,9 px |
-| Tags     | El texto pasa a lima                                                                                                  |
-| Foto     | Rota −2° y escala 1,02 sobre su centro                                                                                |
-| Card     | Fondo naranja; el borde hueso se mantiene                                                                             |
-| Hito     | El círculo se rellena de lima y todo el hito se desplaza 8 px a la derecha                                            |
-| Proyecto | Fondo naranja entre separadores y texto hueso                                                                         |
+| Elemento | Cambio                                                                                                                                                                                                                                                                 |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Wordmark | La letra bajo el cursor (cualquiera) pasa a lima, rota −6° sobre su origen y se adelanta (−0,056; −0,088) em; las siguientes se corren hacia ella unos −0,19 em. El PDF lo muestra con la "a": (−8,9; −14) px, y la "x" y la "i" se corren −26,5 y −30,9 px (issue #7) |
+| Tags     | El texto pasa a lima                                                                                                                                                                                                                                                   |
+| Foto     | Rota −2° y escala 1,02 sobre su centro                                                                                                                                                                                                                                 |
+| Card     | Fondo naranja; el borde hueso se mantiene                                                                                                                                                                                                                              |
+| Hito     | El círculo se rellena de lima y todo el hito se desplaza 8 px a la derecha                                                                                                                                                                                             |
+| Proyecto | Fondo naranja entre separadores y texto hueso                                                                                                                                                                                                                          |
 
 ## Normalizaciones
 
