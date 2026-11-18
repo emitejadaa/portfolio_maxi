@@ -100,10 +100,10 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 
 ## 9. Fotos y assets reales
 
-- Foto para la ficha (vertical, aprox. 3:4) y foto de tenis para el hito 02, optimizadas con `astro:assets`.
+- Hecho (issue #3): retrato en la ficha y foto de los trofeos del Circuito Young Cup en el hito 02, servidas como WebP con `astro:assets` y sin metadatos.
 - Hecho: favicon (la "M" de Inter Black sobre naranja, en SVG, ICO y apple-touch-icon) e imagen Open Graph de 1200 × 630 que replica el hero.
 
-**Necesita:** las fotos en buena resolución.
+**Pendiente:** las fotos originales en mejor resolución. Las actuales miden unos 300 × 400 px y se ven blandas en pantallas de alta densidad; para reemplazarlas alcanza con pisar los archivos de `src/assets/fotos/`.
 
 ## 10. SEO y performance
 
