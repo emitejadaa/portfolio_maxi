@@ -1,17 +1,14 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Maxi · Portfolio</title>
-	</head>
-	<body>
-		<h1>Maxi</h1>
-		<p>Portfolio en construcción.</p>
-	</body>
-</html>
+<BaseLayout>
+  <main
+    class="grid min-h-dvh place-items-center bg-[#C4562E] p-6 text-[#F2F2F0]"
+  >
+    <div class="text-center">
+      <h1 class="text-7xl font-black tracking-tight">Maxi</h1>
+      <p class="mt-4 text-lg">Portfolio en construcción.</p>
+    </div>
+  </main>
+</BaseLayout>
