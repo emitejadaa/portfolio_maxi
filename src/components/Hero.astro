@@ -8,7 +8,7 @@ import { perfil } from "../data/portfolio";
     class="pointer-events-none absolute inset-5 border-[3px] border-hueso/50"
   ></div>
   <div class="contenedor relative">
-    <div class="px-6 pt-[47px] pb-[61px]">
+    <div class="px-6 pt-[47px] pb-[61px] max-sm:pt-9 max-sm:pb-12">
       <h1
         class="wordmark flex w-fit items-baseline leading-none font-black"
         aria-label={perfil.nombre}
@@ -27,9 +27,9 @@ import { perfil } from "../data/portfolio";
         </span>
       </h1>
       <div aria-hidden="true" class="mt-[25px] h-[3px] bg-hueso"></div>
-      <ul class="mt-[18px] flex flex-wrap gap-x-8 gap-y-2">
+      <ul class="mt-[18px] flex flex-wrap gap-x-8 gap-y-2 max-sm:gap-x-6">
         {perfil.tags.map((tag) => (
-          <li class="flex items-center gap-3 text-tag transition-colors duration-200 hover:text-lima">
+          <li class="flex items-center gap-3 text-tag transition-colors duration-200 hover:text-lima max-sm:text-[1.25rem]">
             <span
               aria-hidden="true"
               class="size-3 shrink-0 rounded-full bg-lima"
@@ -49,7 +49,8 @@ import { perfil } from "../data/portfolio";
    * sobre el tamaño de la "i" para que el wordmark escale entero.
    */
   .wordmark {
-    font-size: 10rem;
+    /* 160 px en desktop; en pantallas chicas escala con el ancho */
+    font-size: clamp(5.5rem, 30vw, 10rem);
   }
 
   .letra {
