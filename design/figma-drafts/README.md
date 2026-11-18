@@ -17,14 +17,14 @@ PDFs exportados desde Figma (18/11/2026). Son la fuente de verdad del diseño: l
 
 ## Interacciones anotadas (`Container.pdf`)
 
-| #   | Elemento                                | Estado hover                                                                         |
-| --- | --------------------------------------- | ------------------------------------------------------------------------------------ |
-| 1   | Wordmark "Maxi"                         | La "a" pasa a lima, crece y rota.                                                    |
-| 2   | Tags del hero                           | El texto pasa a lima.                                                                |
-| 3   | Foto de la ficha                        | El marco se inclina unos grados y queda por encima de la barra del nombre.           |
-| 4   | Cards de estadísticas                   | El fondo pasa a naranja.                                                             |
-| 5   | Hitos del timeline                      | El círculo numerado se rellena de lima y el hito se desplaza levemente a la derecha. |
-| 6   | Proyectos (Liba, SpeakUp, Hide n' Seek) | La fila pasa a fondo naranja con texto claro.                                        |
+| #   | Elemento                                | Estado hover                                                                                                         |
+| --- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 1   | Wordmark "Maxi"                         | La letra bajo el cursor pasa a lima y rota; las siguientes se le acercan. El PDF lo muestra con la "a" como ejemplo. |
+| 2   | Tags del hero                           | El texto pasa a lima.                                                                                                |
+| 3   | Foto de la ficha                        | El marco se inclina unos grados y queda por encima de la barra del nombre.                                           |
+| 4   | Cards de estadísticas                   | El fondo pasa a naranja.                                                                                             |
+| 5   | Hitos del timeline                      | El círculo numerado se rellena de lima y el hito se desplaza levemente a la derecha.                                 |
+| 6   | Proyectos (Liba, SpeakUp, Hide n' Seek) | La fila pasa a fondo naranja con texto claro.                                                                        |
 
 ## Paleta detectada
 
