@@ -10,7 +10,7 @@ Portfolio web de **Maximiliano Nudelman (Maxi)**: un one-pager con estética de 
 
 ## Desarrollo
 
-Requiere Node 24 (`.nvmrc`; el mínimo es 22.23.4) y pnpm 10.
+Requiere Node 26 (`.nvmrc`; el mínimo es 22.23.4) y pnpm 10.
 
 ```bash
 pnpm install

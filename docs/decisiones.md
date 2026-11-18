@@ -17,7 +17,7 @@ Registro de las decisiones técnicas del proyecto, con el motivo de cada una y l
 | Framework          | Astro 7 con salida estática                                                             |
 | Estilos            | Tailwind CSS v4, con los tokens del Figma en `@theme`                                   |
 | Lenguaje           | TypeScript estricto (TS 6.0)                                                            |
-| Runtime y paquetes | Node 24 (mínimo 22.23.4) y pnpm 10                                                      |
+| Runtime y paquetes | Node 26 (mínimo 22.23.4) y pnpm 10                                                      |
 | Contenido          | Datos tipados en `src/data/`, sin CMS                                                   |
 | Tipografía         | Autoalojada; la familia se confirma con el Figma (a simple vista, Inter)                |
 | Imágenes           | `astro:assets` con AVIF/WebP y tamaños responsivos                                      |
@@ -44,9 +44,9 @@ Registro de las decisiones técnicas del proyecto, con el motivo de cada una y l
 - Se usa el preset `astro/tsconfigs/strict`.
 - **Por qué 6.0 y no 7:** el language server de Astro (`@astrojs/check`) y `typescript-eslint` todavía no soportan TypeScript 7. Se actualiza cuando lo hagan.
 
-### 4. Node 24 y pnpm 10
+### 4. Node 26 y pnpm 10
 
-- **Node:** Astro 7 exige al menos 22.23.4. Se fija Node 24 (LTS activo) en `.nvmrc` para la CI y para Vercel.
+- **Node:** Astro 7 exige al menos 22.23.4. Se fija Node 26, el LTS activo desde octubre de 2026, en `.nvmrc` para la CI; Vercel usa la misma versión mayor (26.x).
 - **pnpm 10.28:** instalaciones rápidas y estrictas. Queda fijado con el campo `packageManager`, que leen tanto la CI como Corepack.
 
 ### 5. Contenido como datos tipados

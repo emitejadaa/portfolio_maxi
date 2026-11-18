@@ -2,7 +2,7 @@
 
 ## Requisitos
 
-- Node 24 (ver `.nvmrc`; el mínimo es 22.23.4).
+- Node 26 (ver `.nvmrc`; el mínimo es 22.23.4).
 - pnpm 10: `corepack enable` o `npm i -g pnpm@10`.
 
 ```bash
