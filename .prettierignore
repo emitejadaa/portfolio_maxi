@@ -1,0 +1,2 @@
+# Prettier ya ignora lo que está en .gitignore (dist/, .astro/, node_modules/)
+pnpm-lock.yaml
