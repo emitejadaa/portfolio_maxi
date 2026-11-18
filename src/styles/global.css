@@ -2,7 +2,8 @@
 
 /*
  * Tokens del diseño, medidos en los PDFs de design/figma-drafts
- * (detalle en design/especificaciones.md). Tamaños en rem sobre 16 px.
+ * (detalle en design/especificaciones.md). Tamaños en rem sobre 16 px;
+ * interlineados sin unidad para que escalen junto con el tamaño.
  */
 @theme {
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -18,7 +19,7 @@
 
   /* Escala tipográfica */
   --text-cierre: 4.09375rem; /* 65,5px */
-  --text-cierre--line-height: 4.25rem; /* 68px */
+  --text-cierre--line-height: 1.038; /* 68px */
   --text-cierre--letter-spacing: -0.02em;
   --text-cierre--font-weight: 900;
 
@@ -28,7 +29,7 @@
   --text-display--font-weight: 900;
 
   --text-titulo: 2.5625rem; /* 41px */
-  --text-titulo--line-height: 2.75rem; /* 44px */
+  --text-titulo--line-height: 1.073; /* 44px */
   --text-titulo--letter-spacing: -0.02em;
   --text-titulo--font-weight: 900;
 
@@ -38,7 +39,7 @@
   --text-numero--font-weight: 900;
 
   --text-hito: 1.8125rem; /* 29px */
-  --text-hito--line-height: 2rem; /* 32px */
+  --text-hito--line-height: 1.1035; /* 32px */
   --text-hito--font-weight: 900;
 
   --text-tag: 1.5625rem; /* 25px */
@@ -55,14 +56,14 @@
   --text-proyecto--font-weight: 900;
 
   --text-cuerpo: 1rem; /* 16px */
-  --text-cuerpo--line-height: 1.65625rem; /* 26,5px */
+  --text-cuerpo--line-height: 1.65625; /* 26,5px */
 
   --text-valor: 0.9375rem; /* 15px */
   --text-valor--line-height: normal;
   --text-valor--font-weight: 700;
 
   --text-detalle: 0.825rem; /* 13,2px */
-  --text-detalle--line-height: 1.28125rem; /* 20,5px */
+  --text-detalle--line-height: 1.553; /* 20,5px */
 
   --text-circulo: 0.8125rem; /* 13px */
   --text-circulo--line-height: 1;
@@ -74,7 +75,7 @@
   --text-volanta--font-weight: 700;
 
   --text-etiqueta: 0.75rem; /* 12px */
-  --text-etiqueta--line-height: 1rem; /* 16px */
+  --text-etiqueta--line-height: 1.3334; /* 16px */
   --text-etiqueta--letter-spacing: 0.02em;
   --text-etiqueta--font-weight: 700;
 
