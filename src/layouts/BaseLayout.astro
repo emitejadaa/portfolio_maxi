@@ -1,4 +1,6 @@
 ---
+import "@fontsource-variable/inter";
+import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import "../styles/global.css";
 
 interface Props {
@@ -21,6 +23,13 @@ const {
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <link
+      rel="preload"
+      href={interLatin}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <title>{title}</title>
   </head>
   <body>
