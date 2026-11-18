@@ -16,6 +16,22 @@ import { ficha, perfil } from "../data/portfolio";
       <h2 id="ficha-titulo" class="text-titulo">
         {ficha.titulo}
       </h2>
+      <dl class="mt-5 border-t-2 border-hueso">
+        {ficha.filas.map((fila) => (
+          <div class="flex h-[41px] items-baseline justify-between gap-4 border-b border-hueso/20 pt-[10.5px]">
+            <dt class="text-etiqueta text-hueso/75">{fila.etiqueta}</dt>
+            <dd class="text-right text-valor">{fila.valor}</dd>
+          </div>
+        ))}
+      </dl>
+      <ul class="mt-8 grid grid-cols-3 gap-2.5">
+        {ficha.estadisticas.map((estadistica) => (
+          <li class="border-2 border-hueso px-3.5 py-4">
+            <p class="text-numero">{estadistica.valor}</p>
+            <p class="mt-2 text-etiqueta">{estadistica.etiqueta}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>
