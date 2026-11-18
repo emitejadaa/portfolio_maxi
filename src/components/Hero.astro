@@ -85,12 +85,17 @@ import { perfil } from "../data/portfolio";
     transform: translateY(0.01875em);
   }
 
-  /* Hover: la "a" pasa a lima, rota y se adelanta; la "x" y la "i" la siguen */
-  .wordmark:hover .letra-a {
-    color: var(--color-lima);
+  /*
+   * Hover (solo con puntero, como las variantes hover: de Tailwind): la "a"
+   * pasa a lima, rota y se adelanta; la "x" y la "i" la siguen.
+   */
+  @media (hover: hover) {
+    .wordmark:hover .letra-a {
+      color: var(--color-lima);
+    }
   }
 
-  @media (prefers-reduced-motion: no-preference) {
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .wordmark:hover .letra-a {
       transform: translate(-0.056em, -0.0756em) rotate(-6deg);
     }
