@@ -88,3 +88,25 @@
   --text-pie-chico--letter-spacing: 0.02em;
   --text-pie-chico--font-weight: 700;
 }
+
+@layer base {
+  body {
+    background-color: var(--color-hueso);
+    color: var(--color-carbon);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-lima);
+    color: var(--color-carbon);
+  }
+}
+
+/* Ancho del frame del diseño (1100 px) con 40 px de margen lateral */
+@utility contenedor {
+  width: 100%;
+  max-width: 68.75rem;
+  margin-inline: auto;
+  padding-inline: 2.5rem;
+}
