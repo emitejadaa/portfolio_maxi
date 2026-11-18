@@ -5,7 +5,7 @@ import ListaProyectos from "./ListaProyectos.astro";
 
 <section aria-labelledby="trayectoria-titulo">
   <div class="contenedor pt-[87.5px] pb-[136px] max-sm:pt-16 max-sm:pb-[104px]">
-    <p class="text-volanta text-naranja">{trayectoria.volanta}</p>
+    <p class="text-volanta text-naranja-oscuro">{trayectoria.volanta}</p>
     <h2
       id="trayectoria-titulo"
       class="mt-2 text-display max-md:text-[2.5rem] max-sm:text-[2.125rem]"
@@ -30,7 +30,7 @@ import ListaProyectos from "./ListaProyectos.astro";
             ]}
           >
             <div class="max-w-[570px]">
-              <p class="text-volanta text-naranja">{hito.etiqueta}</p>
+              <p class="text-volanta text-naranja-oscuro">{hito.etiqueta}</p>
               <h3 class="mt-[9.5px] text-hito max-sm:text-[1.5rem]">
                 {hito.titulo.split("\n").map((parte, i) =>
                   i === 0 ? (
