@@ -4,6 +4,10 @@
  * un texto o un número no hace falta tocar el marcado.
  */
 
+import type { ImageMetadata } from "astro";
+
+import retrato from "../assets/fotos/maxi-retrato.png";
+
 export interface FilaFicha {
   etiqueta: string;
   valor: string;
@@ -19,6 +23,13 @@ export interface Proyecto {
   rol: string;
   /** Admite saltos de línea forzados (\n), como en el diseño. */
   descripcion: string;
+}
+
+export interface Foto {
+  src: ImageMetadata;
+  alt: string;
+  /** Punto de enfoque (object-position) cuando el marco recorta la foto. */
+  posicion?: string;
 }
 
 /** Columna derecha opcional de un hito. */
@@ -40,6 +51,7 @@ export const perfil = {
   nombreCompleto: "Maximiliano Nudelman",
   numero: "#10",
   tags: ["Matemática", "Lógica", "Deporte", "Gestión"],
+  foto: { src: retrato, alt: "Retrato de Maxi" } satisfies Foto,
 } as const;
 
 export const ficha = {

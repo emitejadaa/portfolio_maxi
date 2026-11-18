@@ -1,11 +1,21 @@
 ---
+import { Image } from "astro:assets";
+
 import { ficha, perfil } from "../data/portfolio";
 ---
 
 <section aria-labelledby="ficha-titulo" class="bg-carbon text-hueso">
   <div class="contenedor grid grid-cols-[502fr_486fr] gap-x-8 py-20 max-lg:grid-cols-1 max-lg:justify-items-center max-lg:gap-y-14 max-sm:py-14">
     <div class="w-full max-w-[502px]">
-      <div class="foto relative z-10 aspect-[502/664] border-8 border-hueso bg-grafito transition-transform duration-300 ease-out motion-safe:hover:scale-[1.02] motion-safe:hover:-rotate-2"></div>
+      <div class="foto relative z-10 aspect-[502/664] border-8 border-hueso bg-grafito transition-transform duration-300 ease-out motion-safe:hover:scale-[1.02] motion-safe:hover:-rotate-2">
+        <Image
+          src={perfil.foto.src}
+          alt={perfil.foto.alt}
+          loading="eager"
+          fetchpriority="high"
+          class="size-full object-cover"
+        />
+      </div>
       <p class="-mt-1 flex h-[59px] w-[96.8%] items-center justify-between bg-naranja px-[18px] text-barra">
         <span>{perfil.nombre}</span>
         <span class="text-lima">{perfil.numero}</span>
