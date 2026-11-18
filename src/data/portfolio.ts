@@ -28,6 +28,7 @@ export type Complemento =
 export interface Hito {
   numero: string;
   etiqueta: string;
+  /** Admite saltos de línea forzados (\n), como en el diseño. */
   titulo: string;
   texto: string;
   complemento?: Complemento;
@@ -65,7 +66,7 @@ export const trayectoria = {
     {
       numero: "01",
       etiqueta: "Talento",
-      titulo: "Los números siempre fueron mi cancha.",
+      titulo: "Los números siempre fueron\nmi cancha.",
       texto:
         "Promedio 10 en matemática y tres menciones en la Olimpíada Matemática Nacional. Me gusta encontrar el patrón detrás de un problema y resolverlo paso a paso.",
     },

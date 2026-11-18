@@ -1,0 +1,34 @@
+---
+import { trayectoria } from "../data/portfolio";
+---
+
+<section aria-labelledby="trayectoria-titulo">
+  <div class="contenedor pt-[87.5px] pb-[136px]">
+    <p class="text-volanta text-naranja">{trayectoria.volanta}</p>
+    <h2 id="trayectoria-titulo" class="mt-2 text-display">
+      {trayectoria.titulo}
+    </h2>
+
+    <ol class="relative mt-[51px] flex flex-col gap-12 before:absolute before:top-[26px] before:-bottom-10 before:left-[24.5px] before:w-[3px] before:bg-carbon">
+      {trayectoria.hitos.map((hito) => (
+        <li class="relative grid grid-cols-[52px_minmax(0,1fr)] gap-x-[22px]">
+          <span
+            aria-hidden="true"
+            class="relative z-10 flex size-[52px] items-center justify-center rounded-full border-3 border-carbon bg-hueso text-circulo"
+          >
+            {hito.numero}
+          </span>
+          <div class="mt-1.5">
+            <div class="max-w-[570px]">
+              <p class="text-volanta text-naranja">{hito.etiqueta}</p>
+              <h3 class="mt-[9.5px] text-hito whitespace-pre-line">
+                {hito.titulo}
+              </h3>
+              <p class="mt-[13px] text-cuerpo">{hito.texto}</p>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
