@@ -17,6 +17,7 @@ export interface Estadistica {
 export interface Proyecto {
   nombre: string;
   rol: string;
+  /** Admite saltos de línea forzados (\n), como en el diseño. */
   descripcion: string;
 }
 
@@ -98,7 +99,7 @@ export const trayectoria = {
             nombre: "Liba",
             rol: "Fundador",
             descripcion:
-              "Liga amateur de básquet 3v3 en Palermo. Organización, sedes, sponsors, reglamento y web. Piloto en diciembre de 2026.",
+              "Liga amateur de básquet 3v3 en Palermo.\nOrganización, sedes, sponsors, reglamento y web. Piloto en diciembre de 2026.",
           },
           {
             nombre: "SpeakUp",

@@ -1,5 +1,6 @@
 ---
 import { trayectoria } from "../data/portfolio";
+import ListaProyectos from "./ListaProyectos.astro";
 ---
 
 <section aria-labelledby="trayectoria-titulo">
@@ -18,7 +19,13 @@ import { trayectoria } from "../data/portfolio";
           >
             {hito.numero}
           </span>
-          <div class="mt-1.5">
+          <div
+            class:list={[
+              "mt-1.5",
+              hito.complemento &&
+                "grid grid-cols-[minmax(0,1fr)_453px] items-start gap-x-12",
+            ]}
+          >
             <div class="max-w-[570px]">
               <p class="text-volanta text-naranja">{hito.etiqueta}</p>
               <h3 class="mt-[9.5px] text-hito whitespace-pre-line">
@@ -26,6 +33,15 @@ import { trayectoria } from "../data/portfolio";
               </h3>
               <p class="mt-[13px] text-cuerpo">{hito.texto}</p>
             </div>
+            {hito.complemento?.tipo === "imagen" && (
+              <div
+                aria-hidden="true"
+                class="aspect-[453/352] border-6 border-carbon bg-piedra"
+              />
+            )}
+            {hito.complemento?.tipo === "proyectos" && (
+              <ListaProyectos proyectos={hito.complemento.proyectos} />
+            )}
           </div>
         </li>
       ))}

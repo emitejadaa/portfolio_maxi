@@ -1,0 +1,23 @@
+---
+import type { Proyecto } from "../data/portfolio";
+
+interface Props {
+  proyectos: Proyecto[];
+}
+
+const { proyectos } = Astro.props;
+---
+
+<ul class="border-t-3 border-carbon">
+  {proyectos.map((proyecto) => (
+    <li class="border-b-2 border-carbon px-3 pt-3.5 pb-[15px]">
+      <div class="flex items-baseline justify-between gap-4">
+        <h4 class="text-proyecto">{proyecto.nombre}</h4>
+        <p class="shrink-0 text-etiqueta">{proyecto.rol}</p>
+      </div>
+      <p class="mt-[5px] text-detalle whitespace-pre-line">
+        {proyecto.descripcion}
+      </p>
+    </li>
+  ))}
+</ul>
