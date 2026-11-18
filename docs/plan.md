@@ -4,20 +4,20 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 
 ## Estado
 
-| #   | Iteración                              | Estado                      |
-| --- | -------------------------------------- | --------------------------- |
-| 0   | Bases del proyecto                     | Hecha                       |
-| 1   | Sistema de diseño                      | Hecha                       |
-| 2   | Contenido como datos                   | Hecha                       |
-| 3   | Hero                                   | Hecha                       |
-| 4   | Ficha y estadísticas                   | Hecha                       |
-| 5   | Timeline "Del talento a la constancia" | Hecha                       |
-| 6   | Cierre y footer                        | Hecha                       |
-| 7   | Responsive (tablet y mobile)           | Hecha                       |
-| 8   | Accesibilidad e interacción            | Hecha (contraste a definir) |
-| 9   | Fotos y assets reales                  | Parcial: faltan las fotos   |
-| 10  | SEO y performance                      | Hecha                       |
-| 11  | QA y lanzamiento v1.0                  | Pendiente                   |
+| #   | Iteración                              | Estado                    |
+| --- | -------------------------------------- | ------------------------- |
+| 0   | Bases del proyecto                     | Hecha                     |
+| 1   | Sistema de diseño                      | Hecha                     |
+| 2   | Contenido como datos                   | Hecha                     |
+| 3   | Hero                                   | Hecha                     |
+| 4   | Ficha y estadísticas                   | Hecha                     |
+| 5   | Timeline "Del talento a la constancia" | Hecha                     |
+| 6   | Cierre y footer                        | Hecha                     |
+| 7   | Responsive (tablet y mobile)           | Hecha                     |
+| 8   | Accesibilidad e interacción            | Hecha                     |
+| 9   | Fotos y assets reales                  | Parcial: faltan las fotos |
+| 10  | SEO y performance                      | Hecha                     |
+| 11  | QA y lanzamiento v1.0                  | Pendiente                 |
 
 ## 0. Bases del proyecto (hecha)
 
@@ -96,7 +96,7 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 
 - Landmarks (`header`, `main`, `footer`), secciones con nombre accesible, jerarquía h1 → h4 y listas semánticas (`ul`, `ol`, `dl`); los elementos decorativos van con `aria-hidden`.
 - Los hovers están sobre elementos no interactivos y son decorativos: no se les agrega foco de teclado (serían paradas de tabulación sin función). Solo se activan con puntero (`hover: hover`) y, con `prefers-reduced-motion`, cambian el color sin rotar ni desplazar.
-- Auditoría automática con axe (WCAG 2.2 AA y buenas prácticas) a 1100 y 375 px: 30 reglas OK y una sola violación, el contraste del naranja en texto chico (ver [riesgos](#riesgos-y-decisiones-pendientes)).
+- Auditoría automática con axe (WCAG 2.2 AA y buenas prácticas) a 1100 y 375 px: 30 reglas OK y sin violaciones desde el ajuste de contraste del issue #1 (antes, una: el naranja en texto chico).
 
 ## 9. Fotos y assets reales
 
@@ -127,6 +127,6 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 
 ## Riesgos y decisiones pendientes
 
-- **Contraste del naranja.** El texto hueso sobre naranja (`#F2F2F0` sobre `#C4562E`) y el naranja sobre hueso de los eyebrows dan 3,97:1. Eso cumple WCAG AA solo para texto grande (24 px, o 18,7 px en negrita). Afecta los textos chicos de la barra "Maxi #10", los hovers de cards y proyectos y los eyebrows ("Cómo llegué hasta acá", "Talento", etc.). La lima sobre naranja da 3,26:1. La auditoría de axe lo confirma en la volanta y las etiquetas de los hitos. **Propuesta:** mantener `#C4562E` en las superficies grandes y usar un naranja apenas más oscuro (`#B44E2A`, 4,61:1) donde haya texto chico. Se implementó fiel al diseño hasta tener una decisión.
+- **Contraste del naranja.** Resuelto en el issue #1: el texto chico naranja y los fondos de hover con texto chico usan `naranja-oscuro` (`#B44E2A`, 4,61:1 con hueso); el hero, la barra "Maxi #10" y los textos grandes conservan `#C4562E`, que para texto grande cumple. axe pasa sin violaciones.
 - **Tipografía.** Los PDFs traen el texto convertido a contornos, así que la familia se identifica comparando esos contornos con la candidata (Inter).
 - **Hovers en pantallas táctiles.** Resuelto: solo se activan en dispositivos con puntero.

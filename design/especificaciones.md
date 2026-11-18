@@ -27,17 +27,18 @@ Valores extraídos de `figma-drafts/Frame.pdf` (estado por defecto) y `figma-dra
 
 ## Color
 
-| Token     | Hex             | Uso                                                    |
-| --------- | --------------- | ------------------------------------------------------ |
-| `naranja` | `#C4562E`       | Hero, barra del nombre, volantas, hovers               |
-| `carbon`  | `#1D2124`       | Fondos oscuros, texto sobre claro, líneas del timeline |
-| `grafito` | `#2A2F33`       | Placeholder de la foto                                 |
-| `hueso`   | `#F2F2F0`       | Fondo claro, texto sobre oscuro, marcos                |
-| `piedra`  | `#E4E3DF`       | Placeholder de la imagen del hito 02                   |
-| `lima`    | `#D4E83A`       | Viñetas, "#10", "y triunfarás", hovers                 |
-| —         | `hueso` al 50 % | Marco interior del hero                                |
-| —         | `hueso` al 75 % | Labels de la tabla                                     |
-| —         | `hueso` al 20 % | Separadores de la tabla y filete del footer            |
+| Token            | Hex             | Uso                                                                      |
+| ---------------- | --------------- | ------------------------------------------------------------------------ |
+| `naranja`        | `#C4562E`       | Hero, barra del nombre, volantas, hovers                                 |
+| `naranja-oscuro` | `#B44E2A`       | Texto chico naranja y fondos de hover con texto chico (4,61:1 con hueso) |
+| `carbon`         | `#1D2124`       | Fondos oscuros, texto sobre claro, líneas del timeline                   |
+| `grafito`        | `#2A2F33`       | Placeholder de la foto                                                   |
+| `hueso`          | `#F2F2F0`       | Fondo claro, texto sobre oscuro, marcos                                  |
+| `piedra`         | `#E4E3DF`       | Placeholder de la imagen del hito 02                                     |
+| `lima`           | `#D4E83A`       | Viñetas, "#10", "y triunfarás", hovers                                   |
+| —                | `hueso` al 50 % | Marco interior del hero                                                  |
+| —                | `hueso` al 75 % | Labels de la tabla                                                       |
+| —                | `hueso` al 20 % | Separadores de la tabla y filete del footer                              |
 
 ## Layout (desktop)
 
