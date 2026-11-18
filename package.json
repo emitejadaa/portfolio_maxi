@@ -16,7 +16,8 @@
     "format:check": "prettier --check .",
     "check": "astro check",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "validate": "pnpm format:check && pnpm lint && pnpm check && pnpm build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",
