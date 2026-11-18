@@ -11,6 +11,8 @@
   /* Paleta: solo los colores del diseño */
   --color-*: initial;
   --color-naranja: #c4562e;
+  /* Para texto chico o fondos con texto chico: 4,61:1 con hueso (AA) */
+  --color-naranja-oscuro: #b44e2a;
   --color-carbon: #1d2124;
   --color-grafito: #2a2f33;
   --color-hueso: #f2f2f0;
