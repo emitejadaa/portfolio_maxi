@@ -1,0 +1,49 @@
+name: Corrección
+description: Pedir un cambio puntual sobre algo ya implementado (diseño, contenido o comportamiento).
+title: "Corrección: "
+labels: ["corrección"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cada corrección se resuelve en su propia branch y PR, que cierra este issue al mergearse.
+  - type: dropdown
+    id: seccion
+    attributes:
+      label: Sección
+      options:
+        - Hero
+        - Ficha y estadísticas
+        - Timeline "Del talento a la constancia"
+        - Cierre y footer
+        - General / varias secciones
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: ¿Qué está mal o qué hay que cambiar?
+      description: Describí lo que se ve hoy.
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: ¿Cómo debería quedar?
+      description: Resultado esperado. Si hay un frame de Figma de referencia, pegá el link.
+    validations:
+      required: true
+  - type: dropdown
+    id: dispositivo
+    attributes:
+      label: ¿En qué dispositivos se ve?
+      multiple: true
+      options:
+        - Desktop
+        - Tablet
+        - Mobile
+  - type: textarea
+    id: referencias
+    attributes:
+      label: Capturas o referencias
+      description: Arrastrá imágenes o pegá links.
