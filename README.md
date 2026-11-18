@@ -2,6 +2,8 @@
 
 Portfolio web de **Maximiliano Nudelman (Maxi)**: un one-pager con estética de ficha deportiva que cuenta su recorrido entre la matemática, el tenis y los proyectos que lidera.
 
+**Sitio:** https://portfolio-maxi-ivory.vercel.app
+
 **Estado:** en desarrollo. El avance por iteraciones está en [`docs/plan.md`](docs/plan.md).
 
 ## Stack

@@ -4,20 +4,20 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 
 ## Estado
 
-| #   | Iteración                              | Estado                            |
-| --- | -------------------------------------- | --------------------------------- |
-| 0   | Bases del proyecto                     | Hecha (falta conectar Vercel)     |
-| 1   | Sistema de diseño                      | Bloqueada: falta el link de Figma |
-| 2   | Contenido como datos                   | Pendiente                         |
-| 3   | Hero                                   | Pendiente                         |
-| 4   | Ficha y estadísticas                   | Pendiente                         |
-| 5   | Timeline "Del talento a la constancia" | Pendiente                         |
-| 6   | Cierre y footer                        | Pendiente                         |
-| 7   | Responsive (tablet y mobile)           | Pendiente                         |
-| 8   | Accesibilidad e interacción            | Pendiente                         |
-| 9   | Fotos y assets reales                  | Necesita las fotos                |
-| 10  | SEO y performance                      | Pendiente                         |
-| 11  | QA y lanzamiento v1.0                  | Pendiente                         |
+| #   | Iteración                              | Estado             |
+| --- | -------------------------------------- | ------------------ |
+| 0   | Bases del proyecto                     | Hecha              |
+| 1   | Sistema de diseño                      | Pendiente          |
+| 2   | Contenido como datos                   | Pendiente          |
+| 3   | Hero                                   | Pendiente          |
+| 4   | Ficha y estadísticas                   | Pendiente          |
+| 5   | Timeline "Del talento a la constancia" | Pendiente          |
+| 6   | Cierre y footer                        | Pendiente          |
+| 7   | Responsive (tablet y mobile)           | Pendiente          |
+| 8   | Accesibilidad e interacción            | Pendiente          |
+| 9   | Fotos y assets reales                  | Necesita las fotos |
+| 10  | SEO y performance                      | Pendiente          |
+| 11  | QA y lanzamiento v1.0                  | Pendiente          |
 
 ## 0. Bases del proyecto (hecha)
 
@@ -26,11 +26,11 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 - Prettier, ESLint, `astro check` y CI en GitHub Actions.
 - Plantillas de issue (_Corrección_) y de PR, y label `corrección`.
 - Documentación: [decisiones](decisiones.md), este plan y la [guía de trabajo](../CONTRIBUTING.md).
-- **Pendiente:** importar el repo en Vercel (producción y previews por PR).
+- Deploy en Vercel: producción en https://portfolio-maxi-ivory.vercel.app y una preview por cada PR.
 
 ## 1. Sistema de diseño
 
-**Objetivo:** que todo lo que sigue use los mismos tokens que el Figma.
+**Objetivo:** que todo lo que sigue use los mismos tokens que el diseño.
 
 - Colores, tipografía (familias, tamaños, pesos, interlineado y tracking), espaciados y bordes como tokens en `@theme` (`src/styles/global.css`).
 - Fuentes autoalojadas y precargadas.
@@ -38,7 +38,7 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 - Layout: contenedor de 1100 px y un componente `Section` para el fondo de cada bloque.
 - Definir el tratamiento del contraste del naranja (ver [riesgos](#riesgos-y-decisiones-pendientes)).
 
-**Necesita:** el link del Figma con acceso de lectura (ideal: Dev Mode).
+**Fuente:** medidas, tamaños y colores extraídos de los PDFs de `design/figma-drafts/`.
 **Commits esperados:** `feat(tokens): definir paleta y escala tipográfica`, `feat(fonts): autoalojar las tipografías`, `feat(layout): agregar contenedor y secciones base`.
 
 ## 2. Contenido como datos
@@ -82,7 +82,7 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 
 ## 7. Responsive (tablet y mobile)
 
-El Figma es solo desktop (1100 px). Propuesta, a menos que llegue un diseño mobile:
+El diseño es solo desktop (1100 px). Propuesta, a menos que llegue un diseño mobile:
 
 - Breakpoints: mobile hasta 639 px, tablet de 640 a 1023 px y desktop desde 1024 px.
 - Ficha: foto arriba y estadísticas debajo; la grilla pasa de 3 a 2 columnas.
@@ -119,16 +119,15 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 
 ## Insumos pendientes
 
-| Insumo                              | Para qué                                 | Bloquea      |
-| ----------------------------------- | ---------------------------------------- | ------------ |
-| Link del Figma (lectura o Dev Mode) | Tokens, tipografías y medidas exactas    | Iteración 1  |
-| Fotos de Maxi (ficha y tenis)       | Reemplazar los placeholders              | Iteración 9  |
-| Diseño mobile, si existe            | No tener que suponer el responsive       | Iteración 7  |
-| Links de contacto o redes           | El diseño no tiene contacto: ¿se agrega? | —            |
-| Dominio propio (opcional)           | URL final                                | Iteración 11 |
+| Insumo                        | Para qué                                 | Bloquea      |
+| ----------------------------- | ---------------------------------------- | ------------ |
+| Fotos de Maxi (ficha y tenis) | Reemplazar los placeholders              | Iteración 9  |
+| Diseño mobile, si existe      | No tener que suponer el responsive       | Iteración 7  |
+| Links de contacto o redes     | El diseño no tiene contacto: ¿se agrega? | —            |
+| Dominio propio (opcional)     | URL final                                | Iteración 11 |
 
 ## Riesgos y decisiones pendientes
 
 - **Contraste del naranja.** El texto hueso sobre naranja (`#F2F2F0` sobre `#C4562E`) y el naranja sobre hueso de los eyebrows dan 3,97:1. Eso cumple WCAG AA solo para texto grande (24 px, o 18,7 px en negrita). Afecta los textos chicos de la barra "Maxi #10", los hovers de cards y proyectos y los eyebrows ("Cómo llegué hasta acá", "Talento", etc.). La lima sobre naranja da 3,26:1. **Propuesta:** mantener `#C4562E` en las superficies grandes y usar un naranja apenas más oscuro (`#B44E2A`, 4,61:1) donde haya texto chico. Se define en la iteración 1, junto con los tokens.
-- **Tipografía.** Los PDFs traen el texto convertido a contornos, así que la familia exacta sale del Figma.
+- **Tipografía.** Los PDFs traen el texto convertido a contornos, así que la familia se identifica comparando esos contornos con la candidata (Inter).
 - **Hovers en pantallas táctiles.** Se resuelven en la iteración 7.

@@ -8,18 +8,19 @@ Registro de las decisiones técnicas del proyecto, con el motivo de cada una y l
 
 - El diseño ([`design/figma-drafts/`](../design/figma-drafts/)) es un **one-pager estático en español**: hero, ficha con estadísticas, timeline de 5 hitos, cierre y footer.
 - Tiene **6 interacciones hover** que se resuelven con CSS (cambios de color, rotaciones y desplazamientos). No hay formularios, login ni datos dinámicos.
-- Prioridades: fidelidad al Figma, carga rápida, accesibilidad, ver el progreso en vivo y un historial de cambios trazable (commits, issues y PRs).
+- La fuente de verdad del diseño son los PDFs exportados de Figma en `design/figma-drafts/`; no se trabaja sobre el archivo de Figma.
+- Prioridades: fidelidad al diseño, carga rápida, accesibilidad, ver el progreso en vivo y un historial de cambios trazable (commits, issues y PRs).
 
 ## Resumen
 
 | Tema               | Decisión                                                                                |
 | ------------------ | --------------------------------------------------------------------------------------- |
 | Framework          | Astro 7 con salida estática                                                             |
-| Estilos            | Tailwind CSS v4, con los tokens del Figma en `@theme`                                   |
+| Estilos            | Tailwind CSS v4, con los tokens del diseño en `@theme`                                  |
 | Lenguaje           | TypeScript estricto (TS 6.0)                                                            |
 | Runtime y paquetes | Node 26 (mínimo 22.23.4) y pnpm 10                                                      |
 | Contenido          | Datos tipados en `src/data/`, sin CMS                                                   |
-| Tipografía         | Autoalojada; la familia se confirma con el Figma (a simple vista, Inter)                |
+| Tipografía         | Autoalojada; la familia se identifica a partir de los PDFs (a simple vista, Inter)      |
 | Imágenes           | `astro:assets` con AVIF/WebP y tamaños responsivos                                      |
 | Interacciones      | CSS puro, con equivalentes de foco y soporte de `prefers-reduced-motion`                |
 | Calidad            | Prettier, ESLint (JS, TS, Astro y accesibilidad), `astro check` y CI                    |
@@ -35,7 +36,7 @@ Registro de las decisiones técnicas del proyecto, con el motivo de cada una y l
 
 ### 2. Estilos: Tailwind CSS v4
 
-- **Por qué:** los tokens del Figma (colores, escala tipográfica, espaciados) se declaran una sola vez en `@theme` y quedan disponibles como utilidades. Los hovers del diseño se escriben con variantes como `hover:`, `group-hover:` y `focus-visible:`. El MCP de Figma exporta sus referencias en Tailwind, así que la traducción es directa.
+- **Por qué:** los tokens del diseño (colores, escala tipográfica, espaciados) se declaran una sola vez en `@theme` y quedan disponibles como utilidades. Los hovers del diseño se escriben con variantes como `hover:`, `group-hover:` y `focus-visible:`.
 - **Integración:** plugin oficial de Vite (`@tailwindcss/vite`); la hoja global es `src/styles/global.css`.
 - **Descartada:** _CSS nativo con custom properties_. Es más legible para quien no conoce Tailwind, pero iterar sobre el diseño es más lento.
 
@@ -57,7 +58,7 @@ Registro de las decisiones técnicas del proyecto, con el motivo de cada una y l
 ### 6. Tipografía autoalojada
 
 - Las fuentes se sirven desde el propio sitio, sin pedidos a Google Fonts en tiempo de ejecución, y las críticas se precargan.
-- Los PDFs traen el texto convertido a contornos, así que la familia, los pesos y la escala exactos se toman del Figma en la iteración 1.
+- Los PDFs traen el texto convertido a contornos, así que la familia, los pesos y la escala se determinan en la iteración 1 midiendo los contornos y comparándolos con la fuente candidata.
 
 ### 7. Imágenes con `astro:assets`
 
@@ -67,7 +68,7 @@ Registro de las decisiones técnicas del proyecto, con el motivo de cada una y l
 
 - Las 6 interacciones son transiciones de color, `transform` y desplazamientos: no hace falta JavaScript ni librerías de animación.
 - Cada hover tiene su equivalente con `:focus-visible` y, en dispositivos táctiles, un comportamiento acordado en la iteración 7. Con `prefers-reduced-motion` se desactivan rotaciones y desplazamientos.
-- Si el prototipo del Figma pide animaciones más complejas (scroll, entrada de secciones), se evalúa en ese momento.
+- Si el diseño suma animaciones más complejas (scroll, entrada de secciones), se evalúa en ese momento.
 
 ### 9. Calidad automatizada
 

@@ -1,6 +1,6 @@
 # Drafts de Figma
 
-PDFs exportados desde Figma (18/11/2026). Son la referencia visual del sitio hasta que conectemos el archivo de Figma.
+PDFs exportados desde Figma (18/11/2026). Son la fuente de verdad del diseño: las medidas, tamaños y colores del sitio se extraen de estos archivos.
 
 | Archivo                          | Frame en Figma | Qué muestra                                                                   |
 | -------------------------------- | -------------- | ----------------------------------------------------------------------------- |
@@ -28,7 +28,7 @@ PDFs exportados desde Figma (18/11/2026). Son la referencia visual del sitio has
 
 ## Paleta detectada
 
-Muestreada de los rellenos vectoriales del PDF; se confirma contra las variables del Figma.
+Muestreada de los rellenos vectoriales del PDF.
 
 | Rol                                     | Hex                             |
 | --------------------------------------- | ------------------------------- |
