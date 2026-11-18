@@ -68,3 +68,9 @@ El diseño tiene pequeñas irregularidades que se unificaron. Si alguna era inte
 - **Separación entre hitos:** es de 54 px (entre el 01 y el 02 era menor).
 - **Línea del timeline:** pasa por el centro de los círculos (en el PDF estaba desplazada 3,5 px a la izquierda).
 - **Imagen del hito 02:** mide 453 px de ancho, alineada con la lista de proyectos y el margen derecho (en el PDF medía 465 y sobresalía 12 px).
+
+## Agregados fuera del diseño
+
+| Elemento                     | Detalle                                                                                                                                                                                                                                                      |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Botón de contacto (issue #5) | En el cierre, 56 px debajo de la frase: "Escribime" con el estilo de los tags (25 px, 900), borde de 2 px en hueso y padding de 16 × 28 px. Hover en lima con texto carbón y foco con contorno lima de 3 px. Debajo, el mail como etiqueta en hueso al 75 %. |

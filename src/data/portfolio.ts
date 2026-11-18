@@ -154,3 +154,9 @@ export const pie = {
   firma: "Maxi · Portfolio",
   anio: "2026",
 };
+
+export const contacto = {
+  email: "maxinudel08@gmail.com",
+  /** Asunto con el que se abre el mail en Gmail. */
+  asunto: "Contacto desde el portfolio",
+};
