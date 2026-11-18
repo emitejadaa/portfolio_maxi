@@ -29,7 +29,7 @@ import { perfil } from "../data/portfolio";
       <div aria-hidden="true" class="mt-[25px] h-[3px] bg-hueso"></div>
       <ul class="mt-[18px] flex flex-wrap gap-x-8 gap-y-2">
         {perfil.tags.map((tag) => (
-          <li class="flex items-center gap-3 text-tag">
+          <li class="flex items-center gap-3 text-tag transition-colors duration-200 hover:text-lima">
             <span
               aria-hidden="true"
               class="size-3 shrink-0 rounded-full bg-lima"
@@ -54,6 +54,9 @@ import { perfil } from "../data/portfolio";
 
   .letra {
     display: inline-block;
+    transition:
+      transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+      color 0.2s ease;
   }
 
   .letra-m {
@@ -66,6 +69,8 @@ import { perfil } from "../data/portfolio";
     margin-inline-start: -0.019em;
     font-size: 0.99125em;
     transform: translateY(0.0126em);
+    /* Origen del glifo: borde izquierdo sobre la línea base */
+    transform-origin: 0 86.33%;
   }
 
   .letra-x {
@@ -77,5 +82,24 @@ import { perfil } from "../data/portfolio";
   .letra-i {
     margin-inline-start: -0.006em;
     transform: translateY(0.01875em);
+  }
+
+  /* Hover: la "a" pasa a lima, rota y se adelanta; la "x" y la "i" la siguen */
+  .wordmark:hover .letra-a {
+    color: var(--color-lima);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .wordmark:hover .letra-a {
+      transform: translate(-0.056em, -0.0756em) rotate(-6deg);
+    }
+
+    .wordmark:hover .letra-x {
+      transform: translate(-0.1825em, -0.0206em);
+    }
+
+    .wordmark:hover .letra-i {
+      transform: translate(-0.1933em, 0.01875em);
+    }
   }
 </style>
