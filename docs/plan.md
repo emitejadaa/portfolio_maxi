@@ -4,20 +4,20 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 
 ## Estado
 
-| #   | Iteración                              | Estado             |
-| --- | -------------------------------------- | ------------------ |
-| 0   | Bases del proyecto                     | Hecha              |
-| 1   | Sistema de diseño                      | Pendiente          |
-| 2   | Contenido como datos                   | Pendiente          |
-| 3   | Hero                                   | Pendiente          |
-| 4   | Ficha y estadísticas                   | Pendiente          |
-| 5   | Timeline "Del talento a la constancia" | Pendiente          |
-| 6   | Cierre y footer                        | Pendiente          |
-| 7   | Responsive (tablet y mobile)           | Pendiente          |
-| 8   | Accesibilidad e interacción            | Pendiente          |
-| 9   | Fotos y assets reales                  | Necesita las fotos |
-| 10  | SEO y performance                      | Pendiente          |
-| 11  | QA y lanzamiento v1.0                  | Pendiente          |
+| #   | Iteración                              | Estado                      |
+| --- | -------------------------------------- | --------------------------- |
+| 0   | Bases del proyecto                     | Hecha                       |
+| 1   | Sistema de diseño                      | Hecha                       |
+| 2   | Contenido como datos                   | Hecha                       |
+| 3   | Hero                                   | Hecha                       |
+| 4   | Ficha y estadísticas                   | Hecha                       |
+| 5   | Timeline "Del talento a la constancia" | Hecha                       |
+| 6   | Cierre y footer                        | Hecha                       |
+| 7   | Responsive (tablet y mobile)           | Hecha                       |
+| 8   | Accesibilidad e interacción            | Hecha (contraste a definir) |
+| 9   | Fotos y assets reales                  | Parcial: faltan las fotos   |
+| 10  | SEO y performance                      | Hecha                       |
+| 11  | QA y lanzamiento v1.0                  | Pendiente                   |
 
 ## 0. Bases del proyecto (hecha)
 
@@ -94,22 +94,21 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 
 ## 8. Accesibilidad e interacción
 
-- Landmarks (`header`, `main`, `footer`), jerarquía de títulos y textos alternativos.
-- Todos los hovers con equivalente de teclado.
-- Con `prefers-reduced-motion`, sin rotaciones ni desplazamientos.
-- Revisión de contraste y prueba con lector de pantalla.
+- Landmarks (`header`, `main`, `footer`), secciones con nombre accesible, jerarquía h1 → h4 y listas semánticas (`ul`, `ol`, `dl`); los elementos decorativos van con `aria-hidden`.
+- Los hovers están sobre elementos no interactivos y son decorativos: no se les agrega foco de teclado (serían paradas de tabulación sin función). Solo se activan con puntero (`hover: hover`) y, con `prefers-reduced-motion`, cambian el color sin rotar ni desplazar.
+- Auditoría automática con axe (WCAG 2.2 AA y buenas prácticas) a 1100 y 375 px: 30 reglas OK y una sola violación, el contraste del naranja en texto chico (ver [riesgos](#riesgos-y-decisiones-pendientes)).
 
 ## 9. Fotos y assets reales
 
 - Foto para la ficha (vertical, aprox. 3:4) y foto de tenis para el hito 02, optimizadas con `astro:assets`.
-- Favicon e imagen para compartir en redes (Open Graph).
+- Hecho: favicon (la "M" de Inter Black sobre naranja, en SVG, ICO y apple-touch-icon) e imagen Open Graph de 1200 × 630 que replica el hero.
 
 **Necesita:** las fotos en buena resolución.
 
 ## 10. SEO y performance
 
-- Título, descripción, Open Graph, URL canónica, `sitemap.xml` y `robots.txt`.
-- Objetivo: Lighthouse ≥ 95 en las cuatro categorías, en mobile y desktop.
+- Título, descripción, Open Graph, URL canónica, `theme-color`, `sitemap.xml` y `robots.txt`.
+- La home pesa 13 KB de HTML y 22 KB de CSS, sin JavaScript; la fuente se autoaloja y se precarga.
 
 ## 11. QA y lanzamiento v1.0
 
@@ -128,6 +127,6 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 
 ## Riesgos y decisiones pendientes
 
-- **Contraste del naranja.** El texto hueso sobre naranja (`#F2F2F0` sobre `#C4562E`) y el naranja sobre hueso de los eyebrows dan 3,97:1. Eso cumple WCAG AA solo para texto grande (24 px, o 18,7 px en negrita). Afecta los textos chicos de la barra "Maxi #10", los hovers de cards y proyectos y los eyebrows ("Cómo llegué hasta acá", "Talento", etc.). La lima sobre naranja da 3,26:1. **Propuesta:** mantener `#C4562E` en las superficies grandes y usar un naranja apenas más oscuro (`#B44E2A`, 4,61:1) donde haya texto chico. Se define en la iteración 1, junto con los tokens.
+- **Contraste del naranja.** El texto hueso sobre naranja (`#F2F2F0` sobre `#C4562E`) y el naranja sobre hueso de los eyebrows dan 3,97:1. Eso cumple WCAG AA solo para texto grande (24 px, o 18,7 px en negrita). Afecta los textos chicos de la barra "Maxi #10", los hovers de cards y proyectos y los eyebrows ("Cómo llegué hasta acá", "Talento", etc.). La lima sobre naranja da 3,26:1. La auditoría de axe lo confirma en la volanta y las etiquetas de los hitos. **Propuesta:** mantener `#C4562E` en las superficies grandes y usar un naranja apenas más oscuro (`#B44E2A`, 4,61:1) donde haya texto chico. Se implementó fiel al diseño hasta tener una decisión.
 - **Tipografía.** Los PDFs traen el texto convertido a contornos, así que la familia se identifica comparando esos contornos con la candidata (Inter).
-- **Hovers en pantallas táctiles.** Se resuelven en la iteración 7.
+- **Hovers en pantallas táctiles.** Resuelto: solo se activan en dispositivos con puntero.

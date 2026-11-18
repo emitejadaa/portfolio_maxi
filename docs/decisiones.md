@@ -67,7 +67,7 @@ Registro de las decisiones técnicas del proyecto, con el motivo de cada una y l
 ### 8. Interacciones en CSS
 
 - Las 6 interacciones son transiciones de color, `transform` y desplazamientos: no hace falta JavaScript ni librerías de animación.
-- Cada hover tiene su equivalente con `:focus-visible` y, en dispositivos táctiles, un comportamiento acordado en la iteración 7. Con `prefers-reduced-motion` se desactivan rotaciones y desplazamientos.
+- Los hovers son decorativos y están sobre elementos no interactivos, así que no se les agrega foco de teclado. Solo se activan con puntero (`@media (hover: hover)`) y con `prefers-reduced-motion` se desactivan rotaciones y desplazamientos.
 - Si el diseño suma animaciones más complejas (scroll, entrada de secciones), se evalúa en ese momento.
 
 ### 9. Calidad automatizada
