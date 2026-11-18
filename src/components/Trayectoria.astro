@@ -4,15 +4,18 @@ import ListaProyectos from "./ListaProyectos.astro";
 ---
 
 <section aria-labelledby="trayectoria-titulo">
-  <div class="contenedor pt-[87.5px] pb-[136px]">
+  <div class="contenedor pt-[87.5px] pb-[136px] max-sm:pt-16 max-sm:pb-[104px]">
     <p class="text-volanta text-naranja">{trayectoria.volanta}</p>
-    <h2 id="trayectoria-titulo" class="mt-2 text-display">
+    <h2
+      id="trayectoria-titulo"
+      class="mt-2 text-display max-md:text-[2.5rem] max-sm:text-[2.125rem]"
+    >
       {trayectoria.titulo}
     </h2>
 
-    <ol class="relative mt-[51px] flex flex-col gap-12 before:absolute before:top-[26px] before:-bottom-10 before:left-[24.5px] before:w-[3px] before:bg-carbon">
+    <ol class="relative mt-[51px] flex flex-col gap-12 max-sm:mt-10 max-sm:gap-10 before:absolute before:top-[26px] before:-bottom-10 before:left-[24.5px] before:w-[3px] before:bg-carbon">
       {trayectoria.hitos.map((hito) => (
-        <li class="group relative grid grid-cols-[52px_minmax(0,1fr)] gap-x-[22px] transition-transform duration-300 ease-out motion-safe:hover:translate-x-2">
+        <li class="group relative grid grid-cols-[52px_minmax(0,1fr)] gap-x-[22px] max-sm:gap-x-4 transition-transform duration-300 ease-out motion-safe:hover:translate-x-2">
           <span
             aria-hidden="true"
             class="relative z-10 flex size-[52px] items-center justify-center rounded-full border-3 border-carbon bg-hueso text-circulo transition-colors duration-200 group-hover:bg-lima"
@@ -23,20 +26,30 @@ import ListaProyectos from "./ListaProyectos.astro";
             class:list={[
               "mt-1.5",
               hito.complemento &&
-                "grid grid-cols-[minmax(0,1fr)_453px] items-start gap-x-12",
+                "grid grid-cols-[minmax(0,1fr)_453px] items-start gap-x-12 max-lg:grid-cols-1 max-lg:gap-y-6",
             ]}
           >
             <div class="max-w-[570px]">
               <p class="text-volanta text-naranja">{hito.etiqueta}</p>
-              <h3 class="mt-[9.5px] text-hito whitespace-pre-line">
-                {hito.titulo}
+              <h3 class="mt-[9.5px] text-hito max-sm:text-[1.5rem]">
+                {hito.titulo.split("\n").map((parte, i) =>
+                  i === 0 ? (
+                    parte
+                  ) : (
+                    <>
+                      {" "}
+                      <br class="max-sm:hidden" />
+                      {parte}
+                    </>
+                  ),
+                )}
               </h3>
               <p class="mt-[13px] text-cuerpo">{hito.texto}</p>
             </div>
             {hito.complemento?.tipo === "imagen" && (
               <div
                 aria-hidden="true"
-                class="aspect-[453/352] border-6 border-carbon bg-piedra"
+                class="aspect-[453/352] w-full max-w-[453px] border-6 border-carbon bg-piedra"
               />
             )}
             {hito.complemento?.tipo === "proyectos" && (

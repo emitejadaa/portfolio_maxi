@@ -29,7 +29,7 @@ export type Complemento =
 export interface Hito {
   numero: string;
   etiqueta: string;
-  /** Admite saltos de línea forzados (\n), como en el diseño. */
+  /** Admite un salto de línea forzado (\n), que se aplica desde tablet. */
   titulo: string;
   texto: string;
   complemento?: Complemento;
