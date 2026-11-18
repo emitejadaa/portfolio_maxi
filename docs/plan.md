@@ -118,12 +118,11 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 
 ## Insumos pendientes
 
-| Insumo                        | Para qué                                 | Bloquea      |
-| ----------------------------- | ---------------------------------------- | ------------ |
-| Fotos de Maxi (ficha y tenis) | Reemplazar los placeholders              | Iteración 9  |
-| Diseño mobile, si existe      | No tener que suponer el responsive       | Iteración 7  |
-| Links de contacto o redes     | El diseño no tiene contacto: ¿se agrega? | —            |
-| Dominio propio (opcional)     | URL final                                | Iteración 11 |
+| Insumo                        | Para qué                           | Bloquea      |
+| ----------------------------- | ---------------------------------- | ------------ |
+| Fotos de Maxi (ficha y tenis) | Reemplazar los placeholders        | Iteración 9  |
+| Diseño mobile, si existe      | No tener que suponer el responsive | Iteración 7  |
+| Dominio propio (opcional)     | URL final                          | Iteración 11 |
 
 ## Riesgos y decisiones pendientes
 
