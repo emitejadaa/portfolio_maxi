@@ -1,12 +1,39 @@
 ---
-import { cierre } from "../data/portfolio";
+import { cierre, contacto } from "../data/portfolio";
+
+// Abre el redactor de Gmail con el destinatario y el asunto cargados: el mail
+// se escribe y se envía desde Gmail, el sitio no envía nada.
+const enlaceGmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contacto.email)}&su=${encodeURIComponent(contacto.asunto)}`;
 ---
 
-<section aria-label="Frase de cierre" class="bg-carbon">
+<section aria-label="Cierre y contacto" class="bg-carbon">
   <div class="contenedor py-[110px] text-center max-sm:py-20">
     <p class="text-cierre max-md:text-[3.25rem] max-sm:text-[2.75rem]">
       <span class="block text-hueso">{cierre.frase}</span>
       <span class="block text-lima">{cierre.remate}</span>
     </p>
+    <div class="mt-14 flex flex-col items-center gap-4">
+      <a
+        href={enlaceGmail}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 border-2 border-hueso px-7 py-4 text-tag text-hueso transition-colors duration-200 hover:border-lima hover:bg-lima hover:text-carbon focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-lima max-sm:text-[1.25rem]"
+      >
+        Escribime
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          class="size-6 shrink-0"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="square"
+        >
+          <path d="M7 17 17 7M8 7h9v9"></path>
+        </svg>
+        <span class="sr-only">(abre Gmail en una pestaña nueva)</span>
+      </a>
+      <p class="text-etiqueta text-hueso/75">{contacto.email}</p>
+    </div>
   </div>
 </section>
