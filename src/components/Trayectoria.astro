@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 import { trayectoria } from "../data/portfolio";
 import ListaProyectos from "./ListaProyectos.astro";
 ---
@@ -47,10 +49,14 @@ import ListaProyectos from "./ListaProyectos.astro";
               <p class="mt-[13px] text-cuerpo">{hito.texto}</p>
             </div>
             {hito.complemento?.tipo === "imagen" && (
-              <div
-                aria-hidden="true"
-                class="aspect-[453/352] w-full max-w-[453px] border-6 border-carbon bg-piedra"
-              />
+              <div class="aspect-[453/352] w-full max-w-[453px] overflow-hidden border-6 border-carbon bg-piedra">
+                <Image
+                  src={hito.complemento.foto.src}
+                  alt={hito.complemento.foto.alt}
+                  class="size-full object-cover"
+                  style={{ objectPosition: hito.complemento.foto.posicion }}
+                />
+              </div>
             )}
             {hito.complemento?.tipo === "proyectos" && (
               <ListaProyectos proyectos={hito.complemento.proyectos} />

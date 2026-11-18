@@ -7,6 +7,7 @@
 import type { ImageMetadata } from "astro";
 
 import retrato from "../assets/fotos/maxi-retrato.png";
+import trofeos from "../assets/fotos/trofeos-young-cup.png";
 
 export interface FilaFicha {
   etiqueta: string;
@@ -34,8 +35,7 @@ export interface Foto {
 
 /** Columna derecha opcional de un hito. */
 export type Complemento =
-  | { tipo: "imagen"; alt: string }
-  | { tipo: "proyectos"; proyectos: Proyecto[] };
+  { tipo: "imagen"; foto: Foto } | { tipo: "proyectos"; proyectos: Proyecto[] };
 
 export interface Hito {
   numero: string;
@@ -89,7 +89,14 @@ export const trayectoria = {
       titulo: "Entrenar cuando nadie mira.",
       texto:
         "El tenis me dio rutina y disciplina: entrenar todos los días, aunque no tenga ganas, y competir hasta el final.",
-      complemento: { tipo: "imagen", alt: "Maxi entrenando tenis" },
+      complemento: {
+        tipo: "imagen",
+        foto: {
+          src: trofeos,
+          alt: "Trofeo del Circuito Young Cup Argentina rodeado de los platos de premiación de los torneos de tenis",
+          posicion: "50% 30%",
+        },
+      },
     },
     {
       numero: "03",
