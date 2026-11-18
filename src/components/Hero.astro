@@ -1,0 +1,81 @@
+---
+import { perfil } from "../data/portfolio";
+---
+
+<header class="relative bg-naranja text-hueso">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-5 border-[3px] border-hueso/50"
+  ></div>
+  <div class="contenedor relative">
+    <div class="px-6 pt-[47px] pb-[61px]">
+      <h1
+        class="wordmark flex w-fit items-baseline leading-none font-black"
+        aria-label={perfil.nombre}
+      >
+        <span aria-hidden="true" class="letra letra-m">
+          M
+        </span>
+        <span aria-hidden="true" class="letra letra-a">
+          a
+        </span>
+        <span aria-hidden="true" class="letra letra-x">
+          x
+        </span>
+        <span aria-hidden="true" class="letra letra-i">
+          i
+        </span>
+      </h1>
+      <div aria-hidden="true" class="mt-[25px] h-[3px] bg-hueso"></div>
+      <ul class="mt-[18px] flex flex-wrap gap-x-8 gap-y-2">
+        {perfil.tags.map((tag) => (
+          <li class="flex items-center gap-3 text-tag">
+            <span
+              aria-hidden="true"
+              class="size-3 shrink-0 rounded-full bg-lima"
+            />
+            {tag}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</header>
+
+<style>
+  /*
+   * En el diseño cada letra tiene su propio tamaño y su propia línea base
+   * (M 151,4 px, a 158,6 px +2, x 145,3 px −3, i 160 px +3). Todo va en em
+   * sobre el tamaño de la "i" para que el wordmark escale entero.
+   */
+  .wordmark {
+    font-size: 10rem;
+  }
+
+  .letra {
+    display: inline-block;
+  }
+
+  .letra-m {
+    font-size: 0.94625em;
+  }
+
+  /* Inter v4 dibuja la M y la x en Black 3 y 2 px más anchas que el
+     diseño: los márgenes devuelven cada letra a su posición. */
+  .letra-a {
+    margin-inline-start: -0.019em;
+    font-size: 0.99125em;
+    transform: translateY(0.0126em);
+  }
+
+  .letra-x {
+    margin-inline-start: -0.007em;
+    font-size: 0.908125em;
+    transform: translateY(-0.0206em);
+  }
+
+  .letra-i {
+    margin-inline-start: -0.006em;
+    transform: translateY(0.01875em);
+  }
+</style>
