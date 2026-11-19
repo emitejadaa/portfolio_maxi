@@ -74,3 +74,48 @@ El diseño tiene pequeñas irregularidades que se unificaron. Si alguna era inte
 | Elemento                     | Detalle                                                                                                                                                                                                                                                      |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Botón de contacto (issue #5) | En el cierre, 56 px debajo de la frase: "Escribime" con el estilo de los tags (25 px, 900), borde de 2 px en hueso y padding de 16 × 28 px. Hover en lima con texto carbón y foco con contorno lima de 3 px. Debajo, el mail como etiqueta en hueso al 75 %. |
+
+## Menús (`figma-drafts/v2`)
+
+Siete páginas de detalle (`Background*.pdf`), medidas sobre el mismo frame de 1100 px. Comparten estructura y cambia el tema.
+
+**Tipografías agregadas:** Caveat 400 para la tiza del pizarrón (volanta y fórmulas de Talento) y Press Start 2P 400 para el videojuego (volanta, título, HUD, números y títulos de Hide n' Seek). El resto sigue en Inter:
+
+| Estilo            | Tamaño | Peso | Interletrado | Interlineado |
+| ----------------- | ------ | ---- | ------------ | ------------ |
+| Título del hero   | 72     | 900  | −2 %         | 80           |
+| Bajada            | 18,7   | 700  | 0            | 27           |
+| Número de card    | 36,8   | 900  | −2 %         | 44           |
+| Título de sección | 27     | 900  | −1 %         | normal       |
+| Cuerpo            | 16     | 400  | 0            | 27           |
+| Ítem de lista     | 15,7   | 700  | 0            | normal       |
+| Etiqueta de card  | 13,6   | 700  | 0            | 21           |
+
+En Hide n' Seek el título va en Press Start 2P de 46 px con sombra naranja de 4 px.
+
+**Colores agregados:**
+
+| Token          | Hex       | Uso                                                  |
+| -------------- | --------- | ---------------------------------------------------- |
+| `ladrillo`     | `#8E3B1E` | Hero de Derrota                                      |
+| `madera`       | `#D59B5F` | Hero de Liba y su pestaña                            |
+| `naranja-liba` | `#E06A1F` | Acentos de Liba                                      |
+| `noche`        | `#11141C` | Fondo de Hide n' Seek                                |
+| `plano`        | `#1E3550` | Hero y textos de UdeSA                               |
+| `celeste`      | `#7FA8D1` | Acentos de UdeSA                                     |
+| `pizarron`     | `#2C2F32` | Franja del pizarrón de Talento                       |
+| `sombra`       | `#242424` | Sombra de las cards de Talento y líneas de la cancha |
+
+**Estructura (desktop):**
+
+- **Encabezado** carbón de 67 px con "Maxi · Menús" (enlace a la home) y las pestañas, con esquinas de 9 px: la activa mide 44 px y toma el color de su página; las demás, 38 px con borde de 2 px en hueso al 30 %. Debajo, un filete de 3 px con el acento del tema.
+- **Hero** con volanta, título y bajada; en los proyectos y en UdeSA suma una imagen de 450 × 337,5 px con marco de 8 px (tablet redondeada en Liba y SpeakUp, lima con sombra naranja en Hide n' Seek, hueso en UdeSA). Alturas: Talento 395, Derrota 351, Trofeos 430, Liba y SpeakUp 481,5, Hide n' Seek 505,5 y UdeSA 513,3 px.
+- **Cuerpo:** cards de números 61 px debajo del hero (249 px de ancho con 8 de separación, o 243 con 16), finales o títulos en tres columnas con fotos 4:5 y borde de 3 px, texto y lista en dos columnas, y el botón "Siguiente pestaña" (la última vuelve a la primera).
+
+**Decisiones:**
+
+- Trofeos: la card de la Young Cup 1 no muestra fecha ni resultado.
+- Hide n' Seek: muestra el logo del juego hasta tener una captura.
+- Texto chico sobre naranja: la pestaña activa de Trofeos y la volanta de Hide n' Seek usan `naranja-oscuro` (4,61:1 con hueso), como en la home.
+- Las fórmulas del pizarrón son decoración (hueso al 20 %, como en el diseño, y con `aria-hidden`), así que quedan fuera del criterio de contraste (WCAG 1.4.3). Es la única alerta de axe en las siete páginas.
+- Los corazones del HUD son un SVG pixelado: Press Start 2P no tiene el glifo "♥".
