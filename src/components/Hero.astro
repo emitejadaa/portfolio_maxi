@@ -1,13 +1,8 @@
 ---
 import { perfil } from "../data/portfolio";
 
-// Cada letra del wordmark con la clase que fija su tamaño y su línea base
-const letras = [
-  { letra: "M", clase: "letra-m" },
-  { letra: "a", clase: "letra-a" },
-  { letra: "x", clase: "letra-x" },
-  { letra: "i", clase: "letra-i" },
-];
+// El wordmark va en dos líneas, nombre y apellido, letra por letra
+const lineas = perfil.nombreCompleto.split(" ").map((palabra) => [...palabra]);
 ---
 
 <header class="relative bg-naranja text-hueso">
@@ -16,19 +11,20 @@ const letras = [
     class="pointer-events-none absolute inset-5 border-[3px] border-hueso/50"
   ></div>
   <div class="contenedor relative">
-    <div class="px-6 pt-[47px] pb-[61px] max-sm:pt-9 max-sm:pb-12">
-      <h1
-        class="wordmark flex w-fit items-baseline leading-none font-black"
-        aria-label={perfil.nombre}
-      >
-        {letras.map(({ letra, clase }) => (
-          <span aria-hidden="true" class={`letra ${clase}`}>
-            <span class="glifo">{letra}</span>
+    <div class="@container px-6 pt-[58px] pb-[65px] max-sm:pt-9 max-sm:pb-12">
+      <h1 class="wordmark font-black" aria-label={perfil.nombreCompleto}>
+        {lineas.map((letras) => (
+          <span aria-hidden="true" class="linea">
+            {letras.map((letra) => (
+              <span class="letra">
+                <span class="glifo">{letra}</span>
+              </span>
+            ))}
           </span>
         ))}
       </h1>
-      <div aria-hidden="true" class="mt-[25px] h-[3px] bg-hueso"></div>
-      <ul class="mt-[18px] flex flex-wrap gap-x-8 gap-y-2 max-sm:gap-x-6">
+      <div aria-hidden="true" class="mt-[30px] h-[3px] bg-hueso"></div>
+      <ul class="mt-[23px] flex flex-wrap gap-x-8 gap-y-2 max-sm:gap-x-6">
         {perfil.tags.map((tag) => (
           <li class="flex items-center gap-3 text-tag transition-colors duration-200 hover:text-lima max-sm:text-[1.25rem]">
             <span
@@ -45,48 +41,30 @@ const letras = [
 
 <style>
   /*
-   * En el diseño cada letra tiene su propio tamaño y su propia línea base
-   * (M 151,4 px, a 158,6 px +2, x 145,3 px −3, i 160 px +3). Todo va en em
-   * sobre el tamaño de la "i" para que el wordmark escale entero.
+   * "Maximiliano", la línea más larga, mide 6,16 em: el cuerpo se ajusta al
+   * ancho disponible para que entre siempre en una línea. En desktop queda
+   * en unos 157 px, casi el tamaño del "Maxi" del diseño (160 px). Los
+   * márgenes conservan las medidas del diseño en desktop: las mayúsculas
+   * arrancan a 75 px del borde del hero y el filete queda 47 px debajo de
+   * la línea base.
    */
   .wordmark {
-    /* 160 px en desktop; en pantallas chicas escala con el ancho */
-    font-size: clamp(5.5rem, 30vw, 10rem);
+    font-size: min(10rem, 16.2cqi);
+    line-height: 0.94;
+  }
+
+  .linea {
+    display: flex;
+    width: fit-content;
   }
 
   /*
-   * El contenedor de cada letra queda quieto: fija tamaño y posición y es el
-   * área de hover. Lo que se mueve es el glifo, así el hover no salta de una
-   * letra a otra mientras las letras se desplazan.
+   * El contenedor de cada letra queda quieto y es el área de hover. Lo que
+   * se mueve es el glifo, así el hover no salta de una letra a otra
+   * mientras las letras se desplazan.
    */
   .letra {
     display: inline-block;
-  }
-
-  .letra-m {
-    font-size: 0.94625em;
-  }
-
-  /* Inter v4 dibuja la M y la x en Black 3 y 2 px más anchas que el
-     diseño: los márgenes devuelven cada letra a su posición. */
-  .letra-a {
-    margin-inline-start: -0.019em;
-    font-size: 0.99125em;
-    --base: 0.0126em;
-    --corrimiento: -0.19em;
-  }
-
-  .letra-x {
-    margin-inline-start: -0.007em;
-    font-size: 0.908125em;
-    --base: -0.0206em;
-    --corrimiento: -0.1825em;
-  }
-
-  .letra-i {
-    margin-inline-start: -0.006em;
-    --base: 0.01875em;
-    --corrimiento: -0.1933em;
   }
 
   .glifo {
@@ -94,9 +72,9 @@ const letras = [
     /* Los glifos no reciben el puntero: si una letra se corre debajo del
        cursor, el hover sigue en la letra que lo tenía. */
     pointer-events: none;
-    transform: translateY(var(--base, 0em));
-    /* Origen del glifo: borde izquierdo sobre la línea base */
-    transform-origin: 0 86.33%;
+    /* Origen del glifo: borde izquierdo sobre la línea base, que con
+       interlineado 0,94 queda al 88,7 % del alto de la caja */
+    transform-origin: 0 88.7%;
     transition:
       transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
       color 0.2s ease;
@@ -104,8 +82,9 @@ const letras = [
 
   /*
    * Hover sobre cualquier letra (solo con puntero): la letra pasa a lima,
-   * rota −6° sobre su origen y se adelanta, y las que le siguen se corren
-   * hacia ella. Son las medidas del ejemplo de la "a" en Container.pdf.
+   * rota −6° sobre su origen y se adelanta, y las que le siguen en su línea
+   * se corren hacia ella. Son las medidas del ejemplo de la "a" en
+   * Container.pdf.
    */
   @media (hover: hover) {
     .letra:hover .glifo {
@@ -115,12 +94,11 @@ const letras = [
 
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .letra:hover .glifo {
-      transform: translate(-0.056em, calc(var(--base, 0em) - 0.0882em))
-        rotate(-6deg);
+      transform: translate(-0.056em, -0.0882em) rotate(-6deg);
     }
 
     .letra:hover ~ .letra .glifo {
-      transform: translate(var(--corrimiento), var(--base, 0em));
+      transform: translateX(-0.19em);
     }
   }
 </style>

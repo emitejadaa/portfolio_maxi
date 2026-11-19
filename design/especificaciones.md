@@ -1,29 +1,29 @@
 # Especificaciones medidas en los PDFs
 
-Valores extraídos de `figma-drafts/Frame.pdf` (estado por defecto) y `figma-drafts/Container.pdf` (hovers) sobre el frame desktop de 1100 px, donde 1 pt del PDF equivale a 1 px. Se obtuvieron con `pdfplumber` (posiciones, tamaños y matrices de los glifos), muestreando píxeles de renders a 2x y 4x (grosores y colores) y comparando la tinta del PDF contra Inter renderizada en Chromium (familia, peso e interletrado).
+Valores extraídos de `figma-drafts/Frame.pdf` (estado por defecto) y `figma-drafts/Container.pdf` (hovers) sobre el frame desktop de 1100 px, donde 1 pt del PDF equivale a 1 px. Desde el issue #10 la home sigue la segunda iteración (`figma-drafts/v2/Frame.pdf`, un lienzo de 1122 px con el frame de 1100 corrido 11 px): las medidas de layout de abajo ya son las de esa versión. Se obtuvieron con `pdfplumber` (posiciones, tamaños y matrices de los glifos), muestreando píxeles de renders a 2x y 4x (grosores y colores) y comparando la tinta del PDF contra Inter renderizada en Chromium (familia, peso e interletrado).
 
 ## Tipografía
 
 **Inter**, corte de texto (sin tamaño óptico de display): con el corte de texto el alto de la tinta coincide 1:1 en todos los estilos, mientras que con el de display los títulos quedan un 6 % más bajos.
 
-| Estilo   | Tamaño                              | Peso | Interletrado | Interlineado | Uso                                           |
-| -------- | ----------------------------------- | ---- | ------------ | ------------ | --------------------------------------------- |
-| Wordmark | M 151,4 · a 158,6 · x 145,3 · i 160 | 900  | 0            | 1            | "Maxi" del hero; cada letra con su línea base |
-| Cierre   | 65,5                                | 900  | −2 %         | 68           | "Persevera / y triunfarás"                    |
-| Display  | 54                                  | 900  | −2 %         | normal       | "Del talento a la constancia."                |
-| Título   | 41                                  | 900  | −2 %         | 44           | "Estadísticas"                                |
-| Número   | 40                                  | 900  | −2 %         | 40           | Números de las cards                          |
-| Hito     | 29                                  | 900  | 0            | 32           | Títulos de los hitos                          |
-| Tag      | 25                                  | 900  | 0            | normal       | Tags del hero                                 |
-| Barra    | 24,5                                | 900  | −2 %         | normal       | "Maxi #10"                                    |
-| Proyecto | 21,5                                | 900  | 0            | normal       | Nombres de los proyectos                      |
-| Cuerpo   | 16                                  | 400  | 0            | 26,5         | Textos de los hitos                           |
-| Valor    | 15                                  | 700  | 0            | normal       | Valores de la tabla                           |
-| Detalle  | 13,2                                | 400  | 0            | 20,5         | Descripciones de los proyectos                |
-| Círculo  | 13                                  | 900  | 0            | 1            | Números de los hitos                          |
-| Volanta  | 12,7                                | 700  | +2 %         | normal       | "Cómo llegué hasta acá" y etiquetas de hitos  |
-| Etiqueta | 12                                  | 700  | +2 %         | 16           | Labels de tabla y cards, roles de proyectos   |
-| Pie      | 13 / 11,5                           | 700  | +2 %         | normal       | "Maxi · Portfolio" / "2026"                   |
+| Estilo   | Tamaño                     | Peso | Interletrado | Interlineado | Uso                                           |
+| -------- | -------------------------- | ---- | ------------ | ------------ | --------------------------------------------- |
+| Wordmark | ≈ 157 (se ajusta al ancho) | 900  | 0            | 0,94         | "Maximiliano / Nudelman" del hero (issue #10) |
+| Cierre   | 65,5                       | 900  | −2 %         | 68           | "Persevera / y triunfarás"                    |
+| Display  | 54                         | 900  | −2 %         | normal       | "Del talento a la constancia."                |
+| Título   | 41                         | 900  | −2 %         | 44           | "Estadísticas"                                |
+| Número   | 40                         | 900  | −2 %         | 40           | Números de las cards                          |
+| Hito     | 29                         | 900  | 0            | 32           | Títulos de los hitos                          |
+| Tag      | 25                         | 900  | 0            | normal       | Tags del hero                                 |
+| Barra    | 24,5                       | 900  | −2 %         | normal       | "Maxi #10"                                    |
+| Proyecto | 21,5                       | 900  | 0            | normal       | Nombres de los proyectos                      |
+| Cuerpo   | 16                         | 400  | 0            | 26,5         | Textos de los hitos                           |
+| Valor    | 15                         | 700  | 0            | normal       | Valores de la tabla                           |
+| Detalle  | 13,2                       | 400  | 0            | 20,5         | Descripciones de los proyectos                |
+| Círculo  | 13                         | 900  | 0            | 1            | Números de los hitos                          |
+| Volanta  | 12,7                       | 700  | +2 %         | normal       | "Cómo llegué hasta acá" y etiquetas de hitos  |
+| Etiqueta | 12                         | 700  | +2 %         | 16           | Labels de tabla y cards, roles de proyectos   |
+| Pie      | 13 / 11,5                  | 700  | +2 %         | normal       | "Maxi · Portfolio" / "2026"                   |
 
 ## Color
 
@@ -43,21 +43,22 @@ Valores extraídos de `figma-drafts/Frame.pdf` (estado por defecto) y `figma-dra
 ## Layout (desktop)
 
 - Contenido de 1020 px: 40 px de margen a cada lado del frame de 1100 px. Los fondos de cada sección ocupan todo el ancho.
-- **Hero (344 px):** marco interior a 20 px del borde, de 3 px. Wordmark, filete de 3 px y tags con 64 px de margen lateral. Viñetas lima de 12 px a 12 px del texto.
-- **Ficha (879 px):** 80 px arriba y abajo. Foto de 502 × 664 con marco interior de 8 px. Barra de 486 × 59, 4 px por debajo de la foto. Columna de 486 px a 32 px de la foto: título, tabla con filete de 2 px y filas de 40 px separadas por 1 px, y grilla de 3 cards con 10 px de separación, borde de 2 px y padding de 16 × 14 px.
-- **Timeline:** círculos de 52 px con aro de 3 px, 6 px por encima del contenido de cada hito. Línea de 3 px por el centro de los círculos, que sigue 40 px por debajo del último hito. Texto a 22 px del círculo; columna derecha de 453 px a 48 px del texto (imagen con marco de 6 px; proyectos con filete de 3 px, separadores de 2 px y padding de 14 × 12 px).
+- **Hero (unos 505 px con el nombre en dos líneas):** marco interior a 20 px del borde, de 3 px. Wordmark, filete de 3 px y tags con 64 px de margen lateral. Las mayúsculas arrancan a 75 px del borde superior, el filete queda 47 px debajo de la última línea base, los tags 23 px debajo del filete y el hero termina 65 px más abajo. Viñetas lima de 12 px a 12 px del texto.
+- **Ficha (873 px):** 80 px arriba y abajo. Foto de 486 × 648 (3:4) con marco interior de 8 px. Barra de 486 × 69 que arranca 4 px por debajo del borde de la foto. Columna de 486 px a 48 px de la foto: título, tabla con filete de 2 px y filas de 46 px separadas por 1 px, y grilla de 3 cards con 10 px de separación, borde de 2 px y padding de 16 × 14 px.
+- **Timeline:** círculos de 52 px con aro de 3 px. Desde el borde superior del círculo, el texto del hito arranca 11 px más abajo, la foto 9 px y la lista de proyectos 6 px. Línea de 3 px por el centro de los círculos, que sigue 37,5 px por debajo del último hito. Texto a 22 px del círculo; columna derecha de 453 px a 48 px del texto (foto 4:3 con marco de 6 px; proyectos con filete de 3 px, separadores de 2 px y padding de 12 px a los lados, 18 arriba y 15 abajo).
+- **Botón "Ver …"** (uno por hito, 20 px debajo del texto): 49 px de alto, borde carbón de 3 px, 18 px de padding lateral, texto Valor (15 px, 700) y la flecha → de Inter de 18 px a 10 px del texto.
 - **Cierre:** 110 px arriba y abajo, centrado. **Footer:** filete de 2 px a todo el ancho y 18 px de padding vertical.
 
 ## Hovers (`Container.pdf`)
 
-| Elemento | Cambio                                                                                                                                                                                                                                                                 |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Wordmark | La letra bajo el cursor (cualquiera) pasa a lima, rota −6° sobre su origen y se adelanta (−0,056; −0,088) em; las siguientes se corren hacia ella unos −0,19 em. El PDF lo muestra con la "a": (−8,9; −14) px, y la "x" y la "i" se corren −26,5 y −30,9 px (issue #7) |
-| Tags     | El texto pasa a lima                                                                                                                                                                                                                                                   |
-| Foto     | Rota −2° y escala 1,02 sobre su centro                                                                                                                                                                                                                                 |
-| Card     | Fondo naranja; el borde hueso se mantiene                                                                                                                                                                                                                              |
-| Hito     | El círculo se rellena de lima y todo el hito se desplaza 8 px a la derecha                                                                                                                                                                                             |
-| Proyecto | Fondo naranja entre separadores y texto hueso                                                                                                                                                                                                                          |
+| Elemento | Cambio                                                                                                                                                                                                                                                                             |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Wordmark | La letra bajo el cursor (cualquiera) pasa a lima, rota −6° sobre su origen y se adelanta (−0,056; −0,088) em; las siguientes de su línea se corren hacia ella unos −0,19 em. El PDF lo muestra con la "a": (−8,9; −14) px, y la "x" y la "i" se corren −26,5 y −30,9 px (issue #7) |
+| Tags     | El texto pasa a lima                                                                                                                                                                                                                                                               |
+| Foto     | Rota −2° y escala 1,02 sobre su centro                                                                                                                                                                                                                                             |
+| Card     | Fondo naranja; el borde hueso se mantiene                                                                                                                                                                                                                                          |
+| Hito     | El círculo se rellena de lima y todo el hito se desplaza 8 px a la derecha                                                                                                                                                                                                         |
+| Proyecto | Fondo naranja entre separadores y texto hueso                                                                                                                                                                                                                                      |
 
 ## Normalizaciones
 
@@ -65,15 +66,19 @@ El diseño tiene pequeñas irregularidades que se unificaron. Si alguna era inte
 
 - **Tamaños dentro de un mismo rol:** por ejemplo, los tags iban de 24,3 a 26 px y los números de las cards de 37,8 a 40. Se usa un único valor por rol.
 - **Espaciado de los tags:** variaba entre 21 y 50 px. Se unificó en 32 px, que conserva el ancho total de la fila.
-- **Separación entre hitos:** es de 54 px (entre el 01 y el 02 era menor).
+- **Separación entre hitos:** 44 px desde el final de cada hito (botón, foto o lista) hasta el círculo siguiente. En el PDF va de 42,6 a 45,2 px, salvo entre el 01 y el 02, donde el botón queda a 12 px del círculo.
+- **Círculos del timeline:** en el PDF de la segunda iteración están 3 px a la izquierda del margen de 40 px; se mantienen alineados con el margen.
+- **"Young Cup"** va con un espacio duro para que "Cup." no quede sola en el último renglón del hito 03.
 - **Línea del timeline:** pasa por el centro de los círculos (en el PDF estaba desplazada 3,5 px a la izquierda).
-- **Imagen del hito 02:** mide 453 px de ancho, alineada con la lista de proyectos y el margen derecho (en el PDF medía 465 y sobresalía 12 px).
 
 ## Agregados fuera del diseño
 
-| Elemento                     | Detalle                                                                                                                                                                                                                                                      |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Botón de contacto (issue #5) | En el cierre, 56 px debajo de la frase: "Escribime" con el estilo de los tags (25 px, 900), borde de 2 px en hueso y padding de 16 × 28 px. Hover en lima con texto carbón y foco con contorno lima de 3 px. Debajo, el mail como etiqueta en hueso al 75 %. |
+| Elemento                                | Detalle                                                                                                                                                                                                                                                                                                                                                                                     |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Botón de contacto (issue #5)            | En el cierre, 56 px debajo de la frase: "Escribime" con el estilo de los tags (25 px, 900), borde de 2 px en hueso y padding de 16 × 28 px. Hover en lima con texto carbón y foco con contorno lima de 3 px. Debajo, el mail como etiqueta en hueso al 75 %.                                                                                                                                |
+| Nombre completo (issue #10)             | El wordmark dice "Maximiliano / Nudelman" en dos líneas, en lugar del "Maxi" del Figma. Todas las letras van con el mismo cuerpo, que se ajusta al ancho para que "Maximiliano" entre en una línea (unos 157 px en desktop), y se mantiene el hover por letra. La pestaña del navegador dice "Maximiliano Nudelman · Portfolio"; la barra de la ficha, el footer y Menús siguen con "Maxi". |
+| Frase de cierre (issue #10)             | Se mantiene "Persevera / y triunfarás", aunque la segunda iteración del Figma la cambia por "El talento arranca el partido. / La constancia lo termina.".                                                                                                                                                                                                                                   |
+| Botones "Ver …" y proyectos (issue #10) | El diseño no define su hover: el botón se rellena de carbón con texto hueso y la flecha avanza 4 px; en los proyectos, toda la fila es un link y la flecha avanza 2 px. Foco con contorno de 3 px: naranja oscuro en los botones y carbón en las filas.                                                                                                                                     |
 
 ## Menús (`figma-drafts/v2`)
 
