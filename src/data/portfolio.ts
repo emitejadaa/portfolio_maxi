@@ -25,6 +25,8 @@ export interface Proyecto {
   rol: string;
   /** Admite saltos de línea forzados (\n), como en el diseño. */
   descripcion: string;
+  /** Página del proyecto en Menús. */
+  href: string;
 }
 
 /** Botón "Ver …" de un hito, que lleva a su página de Menús. */
@@ -134,18 +136,21 @@ export const trayectoria = {
             rol: "Fundador",
             descripcion:
               "Liga amateur de básquet 3v3 en Palermo, con un amigo.\nOrganización, sedes, sponsors, reglamento y web. Piloto en diciembre de 2026.",
+            href: rutaPestana("liba"),
           },
           {
             nombre: "SpeakUp",
             rol: "Módulo de IA",
             descripcion:
               "App de comunicación aumentativa y alternativa (CAA) en español, hecha en equipo.",
+            href: rutaPestana("speakup"),
           },
           {
             nombre: "Hide n’ Seek",
             rol: "Videojuego",
             descripcion:
               "Escondidas en un parque de diversiones de noche. Seleccionado para TIC Experience de ORT.",
+            href: rutaPestana("hide-n-seek"),
           },
         ],
       },
