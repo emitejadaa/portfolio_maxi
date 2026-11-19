@@ -1,0 +1,47 @@
+---
+import "@fontsource/caveat/400.css";
+import "@fontsource/press-start-2p/400.css";
+
+import Bloques from "../../components/menus/Bloques.astro";
+import HeroMenu from "../../components/menus/HeroMenu.astro";
+import Pestanas from "../../components/menus/Pestanas.astro";
+import { temas } from "../../components/menus/temas";
+import { pestanas, type Pestana } from "../../data/menus";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return pestanas.map((pestana) => ({
+    params: { slug: pestana.slug },
+    props: { pestana },
+  }));
+}
+
+interface Props {
+  pestana: Pestana;
+}
+
+const { pestana } = Astro.props;
+const tema = temas[pestana.tema];
+---
+
+<BaseLayout
+  title={`${pestana.nombre} · Maximiliano Nudelman`}
+  description={pestana.bajada.replace(/\n/g, " ")}
+>
+  <div class:list={["relative min-h-dvh", tema.pagina]}>
+    {tema.franja && (
+      <div
+        aria-hidden="true"
+        class:list={[
+          "absolute inset-y-0 left-0 w-[35px] max-md:hidden",
+          tema.franja,
+        ]}
+      />
+    )}
+    <Pestanas actual={pestana.slug} />
+    <main>
+      <HeroMenu pestana={pestana} />
+      <Bloques pestana={pestana} />
+    </main>
+  </div>
+</BaseLayout>
