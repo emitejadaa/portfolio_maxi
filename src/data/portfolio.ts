@@ -59,7 +59,7 @@ export const ficha = {
   filas: [
     { etiqueta: "Posición", valor: "Estratega" },
     { etiqueta: "Especialidad", valor: "Matemática y lógica" },
-    { etiqueta: "Deporte", valor: "Tenis" },
+    { etiqueta: "Deporte", valor: "Tenis · Básquet 3v3" },
     { etiqueta: "Próximo equipo", valor: "UdeSA · Ingeniería Industrial" },
   ] satisfies FilaFicha[],
   estadisticas: [
