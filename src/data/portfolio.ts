@@ -6,8 +6,8 @@
 
 import type { ImageMetadata } from "astro";
 
-import retrato from "../assets/fotos/maxi-retrato.png";
-import trofeos from "../assets/fotos/trofeos-young-cup.png";
+import retrato from "../assets/fotos/maxi-retrato.jpg";
+import trofeos from "../assets/fotos/trofeos-young-cup.jpg";
 
 export interface FilaFicha {
   etiqueta: string;
