@@ -6,16 +6,16 @@ import ListaProyectos from "./ListaProyectos.astro";
 ---
 
 <section aria-labelledby="trayectoria-titulo">
-  <div class="contenedor pt-[87.5px] pb-[136px] max-sm:pt-16 max-sm:pb-[104px]">
+  <div class="contenedor pt-[89.5px] pb-[133.5px] max-sm:pt-16 max-sm:pb-[104px]">
     <p class="text-volanta text-naranja-oscuro">{trayectoria.volanta}</p>
     <h2
       id="trayectoria-titulo"
-      class="mt-2 text-display max-md:text-[2.5rem] max-sm:text-[2.125rem]"
+      class="mt-[11px] text-display max-md:text-[2.5rem] max-sm:text-[2.125rem]"
     >
       {trayectoria.titulo}
     </h2>
 
-    <ol class="relative mt-[51px] flex flex-col gap-12 max-sm:mt-10 max-sm:gap-10 before:absolute before:top-[26px] before:-bottom-10 before:left-[24.5px] before:w-[3px] before:bg-carbon">
+    <ol class="relative mt-12 flex flex-col gap-11 max-sm:mt-10 max-sm:gap-10 before:absolute before:top-[26px] before:-bottom-[37.5px] before:left-[24.5px] before:w-[3px] before:bg-carbon">
       {trayectoria.hitos.map((hito) => (
         <li class="group relative grid grid-cols-[52px_minmax(0,1fr)] gap-x-[22px] max-sm:gap-x-4 transition-transform duration-300 ease-out motion-safe:hover:translate-x-2">
           <span
@@ -31,9 +31,9 @@ import ListaProyectos from "./ListaProyectos.astro";
                 "grid grid-cols-[minmax(0,1fr)_453px] items-start gap-x-12 max-lg:grid-cols-1 max-lg:gap-y-6",
             ]}
           >
-            <div class="max-w-[570px]">
+            <div class="max-w-[570px] pt-[5px]">
               <p class="text-volanta text-naranja-oscuro">{hito.etiqueta}</p>
-              <h3 class="mt-[9.5px] text-hito max-sm:text-[1.5rem]">
+              <h3 class="mt-[12.5px] text-hito max-sm:text-[1.5rem]">
                 {hito.titulo.split("\n").map((parte, i) =>
                   i === 0 ? (
                     parte
@@ -49,10 +49,12 @@ import ListaProyectos from "./ListaProyectos.astro";
               <p class="mt-[13px] text-cuerpo">{hito.texto}</p>
             </div>
             {hito.complemento?.tipo === "imagen" && (
-              <div class="aspect-[453/352] w-full max-w-[453px] overflow-hidden border-6 border-carbon bg-piedra">
+              <div class="aspect-[4/3] w-full max-w-[453px] overflow-hidden border-6 border-carbon bg-piedra lg:mt-[3px]">
                 <Image
                   src={hito.complemento.foto.src}
                   alt={hito.complemento.foto.alt}
+                  widths={[441, 882]}
+                  sizes="(min-width: 640px) 441px, calc(100vw - 120px)"
                   class="size-full object-cover"
                   style={{ objectPosition: hito.complemento.foto.posicion }}
                 />

@@ -79,16 +79,23 @@ export const trayectoria = {
     {
       numero: "01",
       etiqueta: "Talento",
-      titulo: "Los números siempre fueron\nmi cancha.",
+      titulo: "Los números siempre fueron mi\ncancha.",
       texto:
         "Promedio 10 en matemática y tres menciones en la Olimpíada Matemática Nacional. Me gusta encontrar el patrón detrás de un problema y resolverlo paso a paso.",
     },
     {
       numero: "02",
+      etiqueta: "Derrota",
+      titulo: "Tres finales perdidas.",
+      texto:
+        "Perdí tres finales de la Young Cup. Aprendí a aceptar la derrota, analizar qué falló y volver a la cancha con un plan mejor. Hoy encaro los problemas con esa misma tolerancia a la frustración.",
+    },
+    {
+      numero: "03",
       etiqueta: "Perseverancia",
       titulo: "Entrenar cuando nadie mira.",
       texto:
-        "El tenis me dio rutina y disciplina: entrenar todos los días, aunque no tenga ganas, y competir hasta el final.",
+        "Con esa misma constancia volví a entrenar todos los días, aunque no tuviera ganas, hasta ganar tres veces la Young\u00a0Cup.",
       complemento: {
         tipo: "imagen",
         foto: {
@@ -97,13 +104,6 @@ export const trayectoria = {
           posicion: "50% 30%",
         },
       },
-    },
-    {
-      numero: "03",
-      etiqueta: "Derrota",
-      titulo: "Tres finales perdidas.",
-      texto:
-        "También perdí tres finales. Aprendí a aceptar la derrota, analizar qué falló y volver a la cancha con un plan mejor. Hoy encaro los problemas con esa misma tolerancia a la frustración.",
     },
     {
       numero: "04",
@@ -118,7 +118,7 @@ export const trayectoria = {
             nombre: "Liba",
             rol: "Fundador",
             descripcion:
-              "Liga amateur de básquet 3v3 en Palermo.\nOrganización, sedes, sponsors, reglamento y web. Piloto en diciembre de 2026.",
+              "Liga amateur de básquet 3v3 en Palermo, con un amigo.\nOrganización, sedes, sponsors, reglamento y web. Piloto en diciembre de 2026.",
           },
           {
             nombre: "SpeakUp",
