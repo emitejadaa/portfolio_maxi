@@ -8,6 +8,7 @@ import type { ImageMetadata } from "astro";
 
 import retrato from "../assets/fotos/maxi-retrato.jpg";
 import trofeos from "../assets/fotos/trofeos-young-cup.jpg";
+import { rutaPestana } from "./menus";
 
 export interface FilaFicha {
   etiqueta: string;
@@ -24,6 +25,12 @@ export interface Proyecto {
   rol: string;
   /** Admite saltos de línea forzados (\n), como en el diseño. */
   descripcion: string;
+}
+
+/** Botón "Ver …" de un hito, que lleva a su página de Menús. */
+export interface Enlace {
+  texto: string;
+  href: string;
 }
 
 export interface Foto {
@@ -43,6 +50,7 @@ export interface Hito {
   /** Admite un salto de línea forzado (\n), que se aplica desde tablet. */
   titulo: string;
   texto: string;
+  enlace: Enlace;
   complemento?: Complemento;
 }
 
@@ -82,6 +90,10 @@ export const trayectoria = {
       titulo: "Los números siempre fueron mi\ncancha.",
       texto:
         "Promedio 10 en matemática y tres menciones en la Olimpíada Matemática Nacional. Me gusta encontrar el patrón detrás de un problema y resolverlo paso a paso.",
+      enlace: {
+        texto: "Ver mis logros en matemática",
+        href: rutaPestana("talento"),
+      },
     },
     {
       numero: "02",
@@ -89,6 +101,7 @@ export const trayectoria = {
       titulo: "Tres finales perdidas.",
       texto:
         "Perdí tres finales de la Young Cup. Aprendí a aceptar la derrota, analizar qué falló y volver a la cancha con un plan mejor. Hoy encaro los problemas con esa misma tolerancia a la frustración.",
+      enlace: { texto: "Ver las tres finales", href: rutaPestana("derrota") },
     },
     {
       numero: "03",
@@ -96,6 +109,7 @@ export const trayectoria = {
       titulo: "Entrenar cuando nadie mira.",
       texto:
         "Con esa misma constancia volví a entrenar todos los días, aunque no tuviera ganas, hasta ganar tres veces la Young\u00a0Cup.",
+      enlace: { texto: "Ver los tres trofeos", href: rutaPestana("trofeos") },
       complemento: {
         tipo: "imagen",
         foto: {
@@ -111,6 +125,7 @@ export const trayectoria = {
       titulo: "Del cuaderno a la cancha.",
       texto:
         "Uno la lógica y la constancia para armar proyectos reales, en equipo y con fechas.",
+      enlace: { texto: "Ver los proyectos", href: rutaPestana("liba") },
       complemento: {
         tipo: "proyectos",
         proyectos: [
@@ -141,6 +156,7 @@ export const trayectoria = {
       titulo: "Ingeniería Industrial en UdeSA.",
       texto:
         "Una carrera que junta todo lo anterior: matemática para modelar, gestión para organizar y la perseverancia para terminar lo que empiezo.",
+      enlace: { texto: "Ver la carrera", href: rutaPestana("udesa") },
     },
   ] satisfies Hito[],
 };

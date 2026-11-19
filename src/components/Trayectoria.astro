@@ -47,6 +47,18 @@ import ListaProyectos from "./ListaProyectos.astro";
                 )}
               </h3>
               <p class="mt-[13px] text-cuerpo">{hito.texto}</p>
+              <a
+                href={hito.enlace.href}
+                class="group/boton mt-5 flex min-h-[49px] w-fit items-center gap-2.5 border-3 border-carbon px-[18px] py-[7px] text-valor transition-colors duration-200 hover:bg-carbon hover:text-hueso focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-naranja-oscuro"
+              >
+                {hito.enlace.texto}
+                <span
+                  aria-hidden="true"
+                  class="text-[1.125rem] transition-transform duration-200 motion-safe:group-hover/boton:translate-x-1"
+                >
+                  →
+                </span>
+              </a>
             </div>
             {hito.complemento?.tipo === "imagen" && (
               <div class="aspect-[4/3] w-full max-w-[453px] overflow-hidden border-6 border-carbon bg-piedra lg:mt-[3px]">
