@@ -1,0 +1,181 @@
+---
+import { Image } from "astro:assets";
+
+import { siguiente, type Pestana } from "../../data/menus";
+import { temas } from "./temas";
+
+interface Props {
+  pestana: Pestana;
+}
+
+const { pestana } = Astro.props;
+const tema = temas[pestana.tema];
+const proxima = siguiente(pestana.slug);
+const oscura = pestana.tema === "hide";
+---
+
+<div class="contenedor relative pb-[88px] max-sm:pb-16">
+  <!-- Números -->
+  <ul
+    class:list={[
+      "mt-[61px] grid grid-cols-2 items-start md:flex md:flex-wrap max-sm:mt-12",
+      tema.numeros.gap,
+    ]}
+  >
+    {pestana.numeros.map((n) => (
+      <li
+        class:list={["px-[22px] py-5", tema.numeros.ancho, tema.numeros.card]}
+      >
+        <p class:list={["leading-[1.2]", tema.numeros.valor]}>{n.valor}</p>
+        <p
+          class:list={[
+            "mt-2.5 text-[0.85rem] leading-[21px] font-bold",
+            tema.numeros.etiqueta,
+          ]}
+        >
+          {n.etiqueta}
+        </p>
+      </li>
+    ))}
+  </ul>
+
+  <!-- Finales o títulos -->
+  {pestana.partidos && (
+    <section aria-labelledby="partidos" class="mt-[52px]">
+      <h2 id="partidos" class={tema.titulos}>
+        {pestana.partidos.titulo}
+      </h2>
+      <ul class="mt-6 grid gap-6 md:grid-cols-3">
+        {pestana.partidos.items.map((partido) => (
+          <li class="flex flex-col border-3 border-carbon bg-hueso">
+            <div class="relative border-b-3 border-carbon">
+              <Image
+                src={partido.foto.src}
+                alt={partido.foto.alt}
+                widths={[318, 636]}
+                sizes="(min-width: 768px) 318px, 100vw"
+                class="aspect-[4/5] w-full object-cover"
+              />
+              {partido.estado === "Campeón" && (
+                <span
+                  aria-hidden="true"
+                  class="absolute top-2.5 right-2.5 size-[22px] rounded-full border-2 border-carbon bg-lima"
+                />
+              )}
+            </div>
+            <div class="p-[18px]">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-[1.375rem] font-black tracking-[-0.01em]">
+                  {partido.titulo}
+                </h3>
+                <span
+                  class:list={[
+                    "border-2 border-carbon px-2 py-1 text-[0.74rem] font-bold",
+                    partido.estado === "Campeón" && "bg-lima",
+                  ]}
+                >
+                  {partido.estado}
+                </span>
+              </div>
+              {partido.fecha && partido.resultado && (
+                <dl class="mt-3.5 grid grid-cols-2 gap-2">
+                  {[
+                    ["Fecha", partido.fecha],
+                    ["Resultado", partido.resultado],
+                  ].map(([dato, valor]) => (
+                    <div class="bg-carbon px-2.5 py-2">
+                      <dt class="text-[0.675rem] font-bold text-hueso/70">
+                        {dato}
+                      </dt>
+                      <dd
+                        class:list={[
+                          "mt-1 text-[0.83rem] font-bold",
+                          partido.estado === "Campeón"
+                            ? "text-lima"
+                            : "text-hueso",
+                        ]}
+                      >
+                        {valor}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <!-- Texto y lista -->
+  <div class="mt-[52px] grid gap-x-14 gap-y-12 md:grid-cols-2">
+    <section aria-labelledby="texto">
+      <h2 id="texto" class={tema.titulos}>
+        {pestana.texto.titulo}
+      </h2>
+      <p class="mt-3.5 max-w-[485px] text-[1rem] leading-[27px]">
+        {pestana.texto.parrafo}
+      </p>
+    </section>
+    <section aria-labelledby="lista">
+      <h2 id="lista" class={tema.titulos}>
+        {pestana.lista.titulo}
+      </h2>
+      <ul
+        class:list={[
+          "mt-3.5 border-t-2",
+          oscura
+            ? "border-lima"
+            : pestana.tema === "udesa"
+              ? "border-plano"
+              : "border-carbon",
+        ]}
+      >
+        {pestana.lista.items.map((item) => (
+          <li
+            class:list={[
+              "flex items-center gap-3 border-b-2 py-[12.5px] text-[0.98rem] font-bold",
+              tema.separador,
+            ]}
+          >
+            <span
+              aria-hidden="true"
+              class:list={["size-[11px] shrink-0", tema.marcador]}
+            />
+            {item}
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+
+  <!-- Siguiente pestaña -->
+  <a
+    href={`/menus/${proxima.slug}/`}
+    class:list={[
+      "group mt-[72px] flex items-center justify-between gap-6 border-3 bg-carbon px-8 py-[18px] text-hueso focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-lima max-sm:px-5",
+      tema.siguiente,
+    ]}
+  >
+    <span>
+      <span class="block text-[0.79rem] font-bold text-lima">
+        Siguiente pestaña
+      </span>
+      <span class="block text-[1.8rem] leading-tight font-black tracking-[-0.01em]">
+        {proxima.nombre}
+      </span>
+    </span>
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      class="size-9 shrink-0 transition-transform duration-200 motion-safe:group-hover:translate-x-1.5"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="square"
+    >
+      <path d="M4 12h15M13 6l6 6-6 6"></path>
+    </svg>
+  </a>
+</div>

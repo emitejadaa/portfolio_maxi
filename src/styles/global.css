@@ -7,6 +7,9 @@
  */
 @theme {
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Tiza del pizarrón (Talento) y pixel de videojuego (Hide n' Seek) */
+  --font-tiza: "Caveat", cursive;
+  --font-pixel: "Press Start 2P", monospace;
 
   /* Paleta: solo los colores del diseño */
   --color-*: initial;
@@ -18,6 +21,16 @@
   --color-hueso: #f2f2f0;
   --color-piedra: #e4e3df;
   --color-lima: #d4e83a;
+
+  /* Temas de las páginas de Menús (segunda iteración) */
+  --color-ladrillo: #8e3b1e;
+  --color-madera: #d59b5f;
+  --color-naranja-liba: #e06a1f;
+  --color-noche: #11141c;
+  --color-plano: #1e3550;
+  --color-celeste: #7fa8d1;
+  --color-pizarron: #2c2f32;
+  --color-sombra: #242424;
 
   /* Escala tipográfica */
   --text-cierre: 4.09375rem; /* 65,5px */

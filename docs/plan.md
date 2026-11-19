@@ -18,6 +18,8 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 | 9   | Fotos y assets reales                  | Hecha (fotos de baja resolución) |
 | 10  | SEO y performance                      | Hecha                            |
 | 11  | QA y lanzamiento v1.0                  | Pendiente                        |
+| 12  | Menús: páginas de detalle (issue #9)   | Hecha                            |
+| 13  | Home de la segunda iteración (#10)     | En curso                         |
 
 ## 0. Bases del proyecto (hecha)
 
@@ -116,12 +118,25 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 - Tag `v1.0.0` con notas de la versión.
 - Opcional: dominio propio.
 
+## 12. Menús (segunda iteración)
+
+Diseño en `design/figma-drafts/v2/Background*.pdf` ([detalle](../design/figma-drafts/v2/README.md)).
+
+- Una página por pestaña en `/menus/<pestaña>/`: Talento, Derrota, Trofeos, Liba, SpeakUp, Hide n' Seek y UdeSA. Salen de `src/data/menus.ts` con una ruta dinámica, así que sumar o editar una pestaña es tocar solo los datos.
+- Cada página tiene su tema (`src/components/menus/temas.ts`): pizarrón, cancha de polvo de ladrillo, cancha de básquet, app, videojuego nocturno y plano técnico. Comparten la barra de pestañas, el hero, las cards de números, el texto, la lista y el botón "Siguiente pestaña".
+- Fotos de las seis finales y capturas de los proyectos recortadas desde `Foto.pdf`, revisadas una por una para no cortar caras ni trofeos.
+- Mobile: la barra de pestañas se desplaza y muestra la activa; la decoración del hero se oculta.
+- axe sin violaciones en las siete páginas, salvo las fórmulas del pizarrón, que son decorativas ([especificaciones](../design/especificaciones.md#menús-figma-draftsv2)).
+
+**Pendiente:** una captura de Hide n' Seek para reemplazar el logo.
+
 ## Insumos pendientes
 
 | Insumo                              | Para qué                                                    | Bloquea      |
 | ----------------------------------- | ----------------------------------------------------------- | ------------ |
 | Fotos originales en alta resolución | Reemplazar las actuales (~300 × 400 px), que se ven blandas | —            |
 | Diseño mobile, si existe            | Ajustar el responsive propuesto                             | —            |
+| Captura de Hide n' Seek             | Reemplazar el logo en su página de Menús                    | —            |
 | Dominio propio (opcional)           | URL final                                                   | Iteración 11 |
 
 ## Riesgos y decisiones pendientes
