@@ -1,0 +1,66 @@
+---
+import { pestanas } from "../../data/menus";
+import { temas } from "./temas";
+
+interface Props {
+  actual: string;
+}
+
+const { actual } = Astro.props;
+const temaActual = temas[pestanas.find((p) => p.slug === actual)!.tema];
+---
+
+<header class="bg-carbon text-hueso">
+  <div class="contenedor flex min-h-[67px] items-end justify-between gap-x-8 max-md:flex-col max-md:items-start max-md:pt-4">
+    <p class="self-center text-[1.2375rem] max-md:self-start">
+      <a
+        href="/"
+        class="underline-offset-4 hover:underline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-lima"
+      >
+        Maxi
+      </a>
+      · Menús
+    </p>
+    <nav aria-label="Pestañas de Menús" class="max-w-full overflow-x-auto">
+      <ul class="flex items-end gap-0.5 max-md:mt-3">
+        {pestanas.map((p) => {
+          const activa = p.slug === actual;
+          const tema = temas[p.tema];
+          return (
+            <li class="shrink-0">
+              <a
+                href={`/menus/${p.slug}/`}
+                aria-current={activa ? "page" : undefined}
+                class:list={[
+                  "flex items-center gap-1.5 rounded-t-[9px] px-4 text-[0.8125rem] font-bold whitespace-nowrap transition-colors focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-lima",
+                  activa
+                    ? ["h-[44px]", tema.pestana]
+                    : "h-[38px] border-2 border-b-0 border-hueso/30 bg-carbon hover:border-hueso/60",
+                ]}
+              >
+                <span
+                  aria-hidden="true"
+                  class:list={[
+                    "size-[9px] shrink-0",
+                    p.icono === "punto" && "rounded-full",
+                    tema.icono,
+                  ]}
+                />
+                {p.nombre}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  </div>
+  <div aria-hidden="true" class:list={["h-[3px]", temaActual.filete]}></div>
+</header>
+
+<script>
+  // En pantallas angostas la barra se desplaza: muestra la pestaña activa.
+  const activa = document.querySelector<HTMLElement>(
+    'nav[aria-label="Pestañas de Menús"] [aria-current="page"]',
+  );
+  activa?.scrollIntoView({ block: "nearest", inline: "center" });
+</script>
