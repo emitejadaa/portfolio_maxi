@@ -4,22 +4,22 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 
 ## Estado
 
-| #   | Iteración                              | Estado                           |
-| --- | -------------------------------------- | -------------------------------- |
-| 0   | Bases del proyecto                     | Hecha                            |
-| 1   | Sistema de diseño                      | Hecha                            |
-| 2   | Contenido como datos                   | Hecha                            |
-| 3   | Hero                                   | Hecha                            |
-| 4   | Ficha y estadísticas                   | Hecha                            |
-| 5   | Timeline "Del talento a la constancia" | Hecha                            |
-| 6   | Cierre y footer                        | Hecha                            |
-| 7   | Responsive (tablet y mobile)           | Hecha                            |
-| 8   | Accesibilidad e interacción            | Hecha                            |
-| 9   | Fotos y assets reales                  | Hecha (fotos de baja resolución) |
-| 10  | SEO y performance                      | Hecha                            |
-| 11  | QA y lanzamiento v1.0                  | Pendiente                        |
-| 12  | Menús: páginas de detalle (issue #9)   | Hecha                            |
-| 13  | Home de la segunda iteración (#10)     | En curso                         |
+| #   | Iteración                              | Estado    |
+| --- | -------------------------------------- | --------- |
+| 0   | Bases del proyecto                     | Hecha     |
+| 1   | Sistema de diseño                      | Hecha     |
+| 2   | Contenido como datos                   | Hecha     |
+| 3   | Hero                                   | Hecha     |
+| 4   | Ficha y estadísticas                   | Hecha     |
+| 5   | Timeline "Del talento a la constancia" | Hecha     |
+| 6   | Cierre y footer                        | Hecha     |
+| 7   | Responsive (tablet y mobile)           | Hecha     |
+| 8   | Accesibilidad e interacción            | Hecha     |
+| 9   | Fotos y assets reales                  | Hecha     |
+| 10  | SEO y performance                      | Hecha     |
+| 11  | QA y lanzamiento v1.0                  | Pendiente |
+| 12  | Menús: páginas de detalle (issue #9)   | Hecha     |
+| 13  | Home de la segunda iteración (#10)     | Hecha     |
 
 ## 0. Bases del proyecto (hecha)
 
@@ -54,7 +54,7 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 
 ## 3. Hero
 
-- Wordmark "Maxi", filete y tags con viñetas lima.
+- Wordmark, filete y tags con viñetas lima. Desde el issue #10 el wordmark dice "Maximiliano / Nudelman" (el diseño dice "Maxi").
 - Hover 1: la letra bajo el cursor pasa a lima, rota y se adelanta, y las siguientes se le acercan (el PDF lo muestra con la "a"; ver issue #7). Hover 2: los tags pasan a lima.
 
 **Commits esperados:** `feat(hero): maquetar wordmark y tags`, `feat(hero): agregar los hovers del wordmark y los tags`.
@@ -105,7 +105,7 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 - Hecho (issue #3): retrato en la ficha y foto de los trofeos del Circuito Young Cup en el hito 02, servidas como WebP con `astro:assets` y sin metadatos.
 - Hecho: favicon (la "M" de Inter Black sobre naranja, en SVG, ICO y apple-touch-icon) e imagen Open Graph de 1200 × 630 que replica el hero.
 
-**Pendiente:** las fotos originales en mejor resolución. Las actuales miden unos 300 × 400 px y se ven blandas en pantallas de alta densidad; para reemplazarlas alcanza con pisar los archivos de `src/assets/fotos/`.
+- Hecho (issue #10): las fotos en alta resolución, recortadas desde `Foto.pdf`: el retrato mide 972 × 1296 y la foto de los trofeos 882 × 680, el doble de lo que ocupan en pantalla.
 
 ## 10. SEO y performance
 
@@ -130,14 +130,23 @@ Diseño en `design/figma-drafts/v2/Background*.pdf` ([detalle](../design/figma-d
 
 **Pendiente:** una captura de Hide n' Seek para reemplazar el logo.
 
+## 13. Home de la segunda iteración
+
+Diseño en `design/figma-drafts/v2/Frame.pdf` ([medidas](../design/especificaciones.md#layout-desktop)).
+
+- Hitos en el orden nuevo (Talento, Derrota, Perseverancia, Gestión y Próximo partido), con los textos de esta versión y un botón "Ver …" que lleva a la página de Menús de cada uno.
+- Proyectos con flecha: toda la fila es un link a su página. Liba suma "con un amigo".
+- Ficha: el deporte pasa a "Tenis · Básquet 3v3", la foto a 3:4 y la barra "Maxi #10" a todo el ancho de la foto.
+- Pedidos por fuera del Figma: el nombre completo en el hero y en la pestaña del navegador, y la frase de cierre "Persevera / y triunfarás", que se mantiene aunque el Figma la cambie.
+- axe sin violaciones a 1100 y 375 px.
+
 ## Insumos pendientes
 
-| Insumo                              | Para qué                                                    | Bloquea      |
-| ----------------------------------- | ----------------------------------------------------------- | ------------ |
-| Fotos originales en alta resolución | Reemplazar las actuales (~300 × 400 px), que se ven blandas | —            |
-| Diseño mobile, si existe            | Ajustar el responsive propuesto                             | —            |
-| Captura de Hide n' Seek             | Reemplazar el logo en su página de Menús                    | —            |
-| Dominio propio (opcional)           | URL final                                                   | Iteración 11 |
+| Insumo                    | Para qué                                 | Bloquea      |
+| ------------------------- | ---------------------------------------- | ------------ |
+| Diseño mobile, si existe  | Ajustar el responsive propuesto          | —            |
+| Captura de Hide n' Seek   | Reemplazar el logo en su página de Menús | —            |
+| Dominio propio (opcional) | URL final                                | Iteración 11 |
 
 ## Riesgos y decisiones pendientes
 
