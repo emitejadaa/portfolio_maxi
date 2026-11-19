@@ -1,5 +1,5 @@
 ---
-import { pestanas } from "../../data/menus";
+import { pestanas, rutaPestana } from "../../data/menus";
 import { temas } from "./temas";
 
 interface Props {
@@ -29,7 +29,7 @@ const temaActual = temas[pestanas.find((p) => p.slug === actual)!.tema];
           return (
             <li class="shrink-0">
               <a
-                href={`/menus/${p.slug}/`}
+                href={rutaPestana(p.slug)}
                 aria-current={activa ? "page" : undefined}
                 class:list={[
                   "flex items-center gap-1.5 rounded-t-[9px] px-4 text-[0.8125rem] font-bold whitespace-nowrap transition-colors focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-lima",

@@ -19,6 +19,16 @@ import udesa from "../assets/menus/udesa.png";
 export type Tema =
   "talento" | "derrota" | "trofeos" | "liba" | "speakup" | "hide" | "udesa";
 
+/** Pestañas que existen: un link a una que no existe no compila. */
+export type Slug =
+  | "talento"
+  | "derrota"
+  | "trofeos"
+  | "liba"
+  | "speakup"
+  | "hide-n-seek"
+  | "udesa";
+
 export interface Imagen {
   src: ImageMetadata;
   alt: string;
@@ -39,7 +49,7 @@ export interface Partido {
 }
 
 export interface Pestana {
-  slug: string;
+  slug: Slug;
   nombre: string;
   tema: Tema;
   /** Forma del ícono de la pestaña. */
@@ -328,6 +338,11 @@ export const pestanas: Pestana[] = [
     },
   },
 ];
+
+/** URL de la página de una pestaña. */
+export function rutaPestana(slug: Slug): string {
+  return `/menus/${slug}/`;
+}
 
 /** Pestaña que sigue a la dada (la última vuelve a la primera). */
 export function siguiente(slug: string): Pestana {
