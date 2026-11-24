@@ -32,10 +32,10 @@ const temaActual = temas[pestanas.find((p) => p.slug === actual)!.tema];
                 href={rutaPestana(p.slug)}
                 aria-current={activa ? "page" : undefined}
                 class:list={[
-                  "flex items-center gap-1.5 rounded-t-[9px] px-4 text-[0.8125rem] font-bold whitespace-nowrap transition-colors focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-lima",
+                  "flex items-center gap-1.5 rounded-t-[9px] px-4 text-[0.8125rem] font-bold whitespace-nowrap transition-[color,background-color,border-color,height] duration-200 focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-lima",
                   activa
                     ? ["h-[44px]", tema.pestana]
-                    : "h-[38px] border-2 border-b-0 border-hueso/30 bg-carbon hover:border-hueso/60",
+                    : "h-[38px] border-2 border-b-0 border-hueso/30 bg-carbon hover:h-[41px] hover:border-hueso/60",
                 ]}
               >
                 <span

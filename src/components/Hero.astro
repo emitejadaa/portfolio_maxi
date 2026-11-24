@@ -42,10 +42,10 @@ import TituloVivo from "./TituloVivo.astro";
         data-profundidad="4"
       >
         {perfil.tags.map((tag) => (
-          <li class="flex items-center gap-3 text-tag transition-colors duration-200 hover:text-lima max-sm:text-[1.25rem]">
+          <li class="group/tag flex items-center gap-3 text-tag transition-colors duration-200 hover:text-lima max-sm:text-[1.25rem]">
             <span
               aria-hidden="true"
-              class="size-3 shrink-0 rounded-full bg-lima"
+              class="size-3 shrink-0 rounded-full bg-lima transition-transform duration-200 motion-safe:group-hover/tag:scale-125"
             />
             {tag}
           </li>
