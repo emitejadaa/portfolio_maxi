@@ -1,0 +1,127 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+/**
+ * Título con letras que reaccionan al cursor. El movimiento continuo lo
+ * maneja src/scripts/movimiento.ts; sin JavaScript (o con "reducir
+ * movimiento") queda el hover de CSS de abajo, el del diseño: la letra bajo
+ * el cursor pasa al color de acento, se inclina −6° y se adelanta, y las
+ * siguientes se le acercan.
+ *
+ * Los colores se pasan por variables en la línea o en el título:
+ * `--base` (color de las letras) y `--acento` (color al pasar el cursor).
+ * `--origen` es la altura de la línea base dentro de la caja de cada letra,
+ * que es el punto sobre el que rota (depende del interlineado), y
+ * `--corrimiento`, cuánto se acercan las letras siguientes (−0,19 em en el
+ * hero, la medida del diseño; menos en títulos con interletrado más justo).
+ */
+
+interface Linea {
+  texto: string;
+  class?: string;
+}
+
+interface Props extends Omit<HTMLAttributes<"h1">, "class"> {
+  as?: "h1" | "h2" | "p";
+  /** Cada elemento es una línea forzada; dentro, las palabras se acomodan. */
+  lineas: (string | Linea)[];
+  class?: string;
+}
+
+const { as: Etiqueta = "h1", lineas, class: clase, ...atributos } = Astro.props;
+const normalizadas = lineas.map((linea) =>
+  typeof linea === "string" ? { texto: linea } : linea,
+);
+const textoCompleto = normalizadas.map((linea) => linea.texto).join(" ");
+---
+
+<Etiqueta class:list={["titulo-vivo", clase]} data-titulo-vivo {...atributos}>
+  <span class="sr-only">{textoCompleto}</span>
+  {normalizadas.map((linea) => (
+    <span aria-hidden="true" class:list={["linea-viva", linea.class]}>
+      {linea.texto.split(" ").map((palabra, i) => (
+        <>
+          {i > 0 && " "}
+          <span class="palabra">
+            {[...palabra].map((letra) => (
+              <span class="letra">
+                <span class="glifo">{letra}</span>
+              </span>
+            ))}
+          </span>
+        </>
+      ))}
+    </span>
+  ))}
+</Etiqueta>
+
+<style>
+  .linea-viva {
+    display: block;
+  }
+
+  .palabra {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  /*
+   * La caja de cada letra queda quieta y es el área de hover; lo que se
+   * mueve es el glifo, así el hover no salta de una letra a otra mientras
+   * las letras se desplazan.
+   */
+  .letra {
+    display: inline-block;
+  }
+
+  .glifo {
+    display: inline-block;
+    pointer-events: none;
+    color: var(--base, currentColor);
+    transform-origin: 0 var(--origen, 86%);
+    transition:
+      transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+      color 0.2s ease;
+  }
+
+  /* Hover de CSS: sin JavaScript o con "reducir movimiento" */
+  @media (hover: hover) {
+    .titulo-vivo:not(.vivo) .letra:hover .glifo {
+      color: var(--acento, currentColor);
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .titulo-vivo:not(.vivo) .letra:hover .glifo {
+      transform: translate(-0.056em, -0.0882em) rotate(-6deg);
+    }
+
+    .titulo-vivo:not(.vivo) .letra:hover ~ .letra .glifo {
+      transform: translateX(var(--corrimiento, -0.19em));
+    }
+  }
+
+  /*
+   * Con JavaScript, el script escribe en cada glifo cuánto se inclina (--t,
+   * de 0 a 1), cuánto se corre hacia la ola (--s) y cuánto color de acento
+   * toma (--c).
+   */
+  .titulo-vivo.vivo {
+    /* Deslizar el dedo en horizontal mueve la ola; en vertical, la página */
+    touch-action: pan-y;
+  }
+
+  .titulo-vivo.vivo .glifo {
+    transition: none;
+    transform: translate(
+        calc(var(--t) * -0.056em + var(--s) * var(--corrimiento, -0.19em)),
+        calc(var(--t) * -0.0882em)
+      )
+      rotate(calc(var(--t) * -6deg));
+    color: color-mix(
+      in oklab,
+      var(--acento, currentColor) calc(var(--c) * 100%),
+      var(--base, currentColor)
+    );
+  }
+</style>

@@ -11,7 +11,7 @@ const { proyectos } = Astro.props;
 <ul class="border-t-3 border-carbon">
   {proyectos.map((proyecto) => (
     <li class="group/proyecto relative border-b-2 border-carbon px-3 pt-[18px] pb-[15px] transition-colors duration-200 hover:bg-naranja-oscuro hover:text-hueso has-[a:focus-visible]:bg-naranja-oscuro has-[a:focus-visible]:text-hueso has-[a:focus-visible]:outline-3 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-carbon">
-      <div class="flex items-baseline justify-between gap-4">
+      <div class="flex items-baseline justify-between gap-4 transition-transform duration-200 motion-safe:group-hover/proyecto:translate-x-1">
         <h4 class="text-proyecto">
           <!-- Toda la fila es clickeable, pero el link se llama como el proyecto -->
           <a
@@ -31,7 +31,7 @@ const { proyectos } = Astro.props;
           </span>
         </p>
       </div>
-      <p class="mt-[9px] text-detalle whitespace-pre-line">
+      <p class="mt-[9px] text-detalle whitespace-pre-line transition-transform duration-200 motion-safe:group-hover/proyecto:translate-x-1">
         {proyecto.descripcion}
       </p>
     </li>

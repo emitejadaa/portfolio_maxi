@@ -20,7 +20,7 @@ import ListaProyectos from "./ListaProyectos.astro";
         <li class="group relative grid grid-cols-[52px_minmax(0,1fr)] gap-x-[22px] max-sm:gap-x-4 transition-transform duration-300 ease-out motion-safe:hover:translate-x-2">
           <span
             aria-hidden="true"
-            class="relative z-10 flex size-[52px] items-center justify-center rounded-full border-3 border-carbon bg-hueso text-circulo transition-colors duration-200 group-hover:bg-lima"
+            class="relative z-10 flex size-[52px] items-center justify-center rounded-full border-3 border-carbon bg-hueso text-circulo transition-[background-color,scale] duration-200 group-hover:bg-lima motion-safe:group-hover:scale-110"
           >
             {hito.numero}
           </span>
@@ -49,6 +49,7 @@ import ListaProyectos from "./ListaProyectos.astro";
               <p class="mt-[13px] text-cuerpo">{hito.texto}</p>
               <a
                 href={hito.enlace.href}
+                data-iman="5"
                 class="group/boton mt-5 flex min-h-[49px] w-fit items-center gap-2.5 border-3 border-carbon px-[18px] py-[7px] text-valor transition-colors duration-200 hover:bg-carbon hover:text-hueso focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-naranja-oscuro"
               >
                 {hito.enlace.texto}
@@ -61,7 +62,11 @@ import ListaProyectos from "./ListaProyectos.astro";
               </a>
             </div>
             {hito.complemento?.tipo === "imagen" && (
-              <div class="aspect-[4/3] w-full max-w-[453px] overflow-hidden border-6 border-carbon bg-piedra lg:mt-[3px]">
+              <div
+                class="relative aspect-[4/3] w-full max-w-[453px] overflow-hidden border-6 border-carbon bg-piedra lg:mt-[3px]"
+                data-inclinar="5"
+                data-brillo
+              >
                 <Image
                   src={hito.complemento.foto.src}
                   alt={hito.complemento.foto.alt}

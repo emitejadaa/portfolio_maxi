@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 
 import type { Pestana } from "../../data/menus";
+import TituloVivo from "../TituloVivo.astro";
 
 interface Props {
   pestana: Pestana;
@@ -13,6 +14,17 @@ const tenis = t === "derrota" || t === "trofeos";
 const textoOscuro = t === "liba" || t === "speakup";
 const lineasTitulo = pestana.titulo.split("\n");
 const lineasBajada = pestana.bajada.split("\n");
+
+// Color de las letras del título y el que toman al pasar el cursor
+const colorTitulo = {
+  talento: "[--acento:var(--color-lima)] [--base:var(--color-hueso)]",
+  derrota: "[--acento:var(--color-lima)] [--base:var(--color-hueso)]",
+  trofeos: "[--acento:var(--color-lima)] [--base:var(--color-hueso)]",
+  liba: "[--acento:var(--color-hueso)] [--base:var(--color-carbon)]",
+  speakup: "[--acento:var(--color-naranja)] [--base:var(--color-carbon)]",
+  hide: "[--acento:var(--color-lima)] [--base:var(--color-hueso)]",
+  udesa: "[--acento:var(--color-lima)] [--base:var(--color-hueso)]",
+}[t];
 
 const fondo = {
   talento: "bg-carbon md:min-h-[395px] pt-[76px] pb-[76px]",
@@ -49,7 +61,9 @@ const marcadorVolanta = {
 <section
   aria-labelledby="titulo-pestana"
   class:list={["relative overflow-hidden", fondo]}
+  data-escena
 >
+  <div aria-hidden="true" data-luz></div>
   <!-- Decoración de fondo, a todo el ancho -->
   {t === "talento" && (
     <div
@@ -87,6 +101,7 @@ const marcadorVolanta = {
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 mx-auto max-w-[68.75rem] max-md:hidden"
+    data-profundidad="10"
   >
     {t === "talento" && (
       <>
@@ -161,32 +176,21 @@ const marcadorVolanta = {
           />
           {pestana.volanta}
         </p>
-        <h1
+        <TituloVivo
           id="titulo-pestana"
+          lineas={lineasTitulo}
           class:list={[
             t === "hide"
-              ? "mt-[22px] font-pixel text-[2.875rem] leading-[48px] text-hueso [text-shadow:4px_4px_0_var(--color-naranja)] max-sm:text-[2rem] max-sm:leading-[38px]"
-              : "text-[4.5rem] leading-[1.11] font-black tracking-[-0.02em] max-md:text-[3.25rem] max-sm:text-[2.6rem]",
+              ? "mt-[22px] font-pixel text-[2.875rem] leading-[48px] [text-shadow:4px_4px_0_var(--color-naranja)] [--corrimiento:-0.08em] [--origen:92%] max-sm:text-[2rem] max-sm:leading-[38px]"
+              : "text-[4.5rem] leading-[1.11] font-black tracking-[-0.02em] [--corrimiento:-0.08em] [--origen:82.8%] max-md:text-[3.25rem] max-sm:text-[2.6rem]",
             t === "talento"
               ? "mt-[30px]"
               : t === "udesa"
                 ? "mt-5"
                 : t !== "hide" && "mt-[22px]",
-            textoOscuro ? "text-carbon" : t !== "hide" && "text-hueso",
+            colorTitulo,
           ]}
-        >
-          {lineasTitulo.map((linea, i) =>
-            i === 0 ? (
-              linea
-            ) : (
-              <>
-                {" "}
-                <br />
-                {linea}
-              </>
-            ),
-          )}
-        </h1>
+        />
         <p
           class:list={[
             "mt-[17px] max-w-[540px] text-[1.17rem] leading-[27px] font-bold",
@@ -208,7 +212,7 @@ const marcadorVolanta = {
       </div>
 
       {pestana.imagen && (
-        <div class="relative w-full max-w-[450px]">
+        <div class="relative w-full max-w-[450px]" data-inclinar="5">
           <div
             class:list={[
               "relative aspect-[450/337.5] overflow-hidden",
@@ -218,6 +222,7 @@ const marcadorVolanta = {
                 "border-8 border-lima bg-piedra shadow-[8px_8px_0_var(--color-naranja)]",
               t === "udesa" && "border-8 border-hueso bg-hueso",
             ]}
+            data-brillo
           >
             <Image
               src={pestana.imagen.src}

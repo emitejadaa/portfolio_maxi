@@ -131,3 +131,111 @@
     padding-inline: 1.25rem;
   }
 }
+
+/*
+ * Movimiento con el puntero (src/scripts/movimiento.ts escribe las
+ * variables). Sin JavaScript valen 0 y no cambia nada. Se registran como no
+ * heredables para que un elemento no tome el movimiento de su contenedor.
+ */
+@property --t {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --s {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --c {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --rx {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --ry {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --mx {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --my {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --px {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --py {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@layer components {
+  /*
+   * Las transformaciones solo se aplican cuando el script está activo (sin
+   * JavaScript o con "reducir movimiento" no hay ninguna).
+   */
+
+  /* Se inclina en 3D hacia el cursor */
+  .con-movimiento [data-inclinar] {
+    transform: perspective(60rem) rotateX(var(--rx)) rotateY(var(--ry));
+  }
+
+  /* Reflejo que sigue al cursor sobre una foto (el elemento es relative) */
+  [data-brillo]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      circle at var(--lx, 50%) var(--ly, 50%),
+      rgb(255 255 255 / 0.2),
+      transparent 60%
+    );
+    opacity: var(--brillo, 0);
+  }
+
+  /* Se acerca al cursor */
+  .con-movimiento [data-iman] {
+    transform: translate3d(var(--mx), var(--my), 0);
+  }
+
+  /* Capas de una escena que se desplazan con el cursor */
+  .con-movimiento [data-profundidad] {
+    transform: translate3d(var(--px), var(--py), 0);
+  }
+
+  /* Luz suave que sigue al cursor dentro de una escena */
+  [data-luz] {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      34rem circle at var(--lx, 50%) var(--ly, 50%),
+      rgb(255 255 255 / 0.11),
+      transparent 70%
+    );
+  }
+}
