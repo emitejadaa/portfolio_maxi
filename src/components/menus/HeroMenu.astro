@@ -61,7 +61,9 @@ const marcadorVolanta = {
 <section
   aria-labelledby="titulo-pestana"
   class:list={["relative overflow-hidden", fondo]}
+  data-escena
 >
+  <div aria-hidden="true" data-luz></div>
   <!-- Decoración de fondo, a todo el ancho -->
   {t === "talento" && (
     <div
@@ -99,6 +101,7 @@ const marcadorVolanta = {
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 mx-auto max-w-[68.75rem] max-md:hidden"
+    data-profundidad="10"
   >
     {t === "talento" && (
       <>

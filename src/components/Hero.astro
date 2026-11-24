@@ -3,10 +3,17 @@ import { perfil } from "../data/portfolio";
 import TituloVivo from "./TituloVivo.astro";
 ---
 
-<header class="relative bg-naranja text-hueso">
+<!--
+  El hero es una escena: con el mouse, el nombre, el filete, los tags y el
+  marco se desplazan a distintas profundidades y una luz suave sigue al
+  cursor (src/scripts/movimiento.ts).
+-->
+<header class="relative bg-naranja text-hueso" data-escena>
+  <div aria-hidden="true" data-luz></div>
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-5 border-[3px] border-hueso/50"
+    data-profundidad="-3"
   ></div>
   <div class="contenedor relative">
     <div class="@container px-6 pt-[58px] pb-[65px] max-sm:pt-9 max-sm:pb-12">
@@ -23,9 +30,17 @@ import TituloVivo from "./TituloVivo.astro";
       <TituloVivo
         lineas={perfil.nombreCompleto.split(" ")}
         class="text-[length:min(10rem,16.2cqi)] leading-[0.94] font-black [--acento:var(--color-lima)] [--base:var(--color-hueso)] [--origen:88.7%]"
+        data-profundidad="8"
       />
-      <div aria-hidden="true" class="mt-[30px] h-[3px] bg-hueso"></div>
-      <ul class="mt-[23px] flex flex-wrap gap-x-8 gap-y-2 max-sm:gap-x-6">
+      <div
+        aria-hidden="true"
+        class="mt-[30px] h-[3px] bg-hueso"
+        data-profundidad="5"
+      ></div>
+      <ul
+        class="mt-[23px] flex flex-wrap gap-x-8 gap-y-2 max-sm:gap-x-6"
+        data-profundidad="4"
+      >
         {perfil.tags.map((tag) => (
           <li class="flex items-center gap-3 text-tag transition-colors duration-200 hover:text-lima max-sm:text-[1.25rem]">
             <span

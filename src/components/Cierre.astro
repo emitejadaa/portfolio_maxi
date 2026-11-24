@@ -7,8 +7,13 @@ import TituloVivo from "./TituloVivo.astro";
 const enlaceGmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contacto.email)}&su=${encodeURIComponent(contacto.asunto)}`;
 ---
 
-<section aria-label="Cierre y contacto" class="bg-carbon">
-  <div class="contenedor py-[110px] text-center max-sm:py-20">
+<section
+  aria-label="Cierre y contacto"
+  class="relative overflow-hidden bg-carbon"
+  data-escena
+>
+  <div aria-hidden="true" data-luz></div>
+  <div class="contenedor relative py-[110px] text-center max-sm:py-20">
     <!-- Cada línea toma el color de la otra al pasar el cursor -->
     <TituloVivo
       as="p"
