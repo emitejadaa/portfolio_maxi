@@ -20,6 +20,7 @@ El desarrollo avanza en iteraciones cortas. Cada una se integra en `main` con co
 | 11  | QA y lanzamiento v1.0                  | Pendiente |
 | 12  | Menús: páginas de detalle (issue #9)   | Hecha     |
 | 13  | Home de la segunda iteración (#10)     | Hecha     |
+| 14  | Movimiento con el cursor (#13)         | Hecha     |
 
 ## 0. Bases del proyecto (hecha)
 
@@ -110,7 +111,7 @@ Antes de cerrar la iteración se validan capturas a 375, 768 y 1280 px.
 ## 10. SEO y performance
 
 - Título, descripción, Open Graph, URL canónica, `theme-color`, `sitemap.xml` y `robots.txt`.
-- La home pesa 13 KB de HTML y 22 KB de CSS, sin JavaScript; la fuente se autoaloja y se precarga.
+- La home pesa, comprimida, 5 KB de HTML, 9 KB de CSS y 2 KB de JavaScript (el movimiento con el cursor, desde el issue #13). La fuente se autoaloja y se precarga.
 
 ## 11. QA y lanzamiento v1.0
 
@@ -139,6 +140,25 @@ Diseño en `design/figma-drafts/v2/Frame.pdf` ([medidas](../design/especificacio
 - Ficha: el deporte pasa a "Tenis · Básquet 3v3", la foto a 3:4 y la barra "Maxi #10" a todo el ancho de la foto.
 - Pedidos por fuera del Figma: el nombre completo en el hero y en la pestaña del navegador, y la frase de cierre "Persevera / y triunfarás", que se mantiene aunque el Figma la cambie.
 - axe sin violaciones a 1100 y 375 px.
+
+## 14. Movimiento con el cursor
+
+Pedido por fuera del diseño (issue #13), para que el sitio se sienta como una aplicación viva y no como un PDF plano.
+
+- **Títulos con letras vivas** (`TituloVivo.astro`): el nombre del hero, los títulos de Menús y la frase de cierre.
+  - Al entrar en pantalla, una ola de inclinación los recorre una vez.
+  - Con el mouse, las letras cercanas al cursor se inclinan, se adelantan y cambian de color de forma continua.
+  - En pantallas táctiles responden al tocar o deslizar el dedo.
+- **Escenas:** en los heroes y en el cierre, las capas se desplazan con el cursor a distintas profundidades y una luz suave lo sigue.
+- **Inclinación 3D hacia el cursor:**
+  - en la home, la foto de la ficha (con un reflejo), las cards de estadísticas y la foto de los trofeos;
+  - en Menús, la imagen del hero y las cards de números y de finales.
+- **Imán:** los botones "Ver …", "Escribime" y "Siguiente pestaña" se acercan un poco al cursor.
+- **Detalles al pasar el cursor:**
+  - las viñetas de los tags y los círculos del timeline crecen;
+  - las filas de proyectos avanzan;
+  - las pestañas de Menús se levantan.
+- **Accesibilidad:** con "reducir movimiento" no se mueve nada, y sin JavaScript quedan los hovers de CSS. axe no suma violaciones.
 
 ## Insumos pendientes
 

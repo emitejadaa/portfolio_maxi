@@ -13,19 +13,19 @@ Registro de las decisiones técnicas del proyecto, con el motivo de cada una y l
 
 ## Resumen
 
-| Tema               | Decisión                                                                                |
-| ------------------ | --------------------------------------------------------------------------------------- |
-| Framework          | Astro 7 con salida estática                                                             |
-| Estilos            | Tailwind CSS v4, con los tokens del diseño en `@theme`                                  |
-| Lenguaje           | TypeScript estricto (TS 6.0)                                                            |
-| Runtime y paquetes | Node 26 (mínimo 22.23.4) y pnpm 10                                                      |
-| Contenido          | Datos tipados en `src/data/`, sin CMS                                                   |
-| Tipografía         | Autoalojada; la familia se identifica a partir de los PDFs (a simple vista, Inter)      |
-| Imágenes           | `astro:assets` con AVIF/WebP y tamaños responsivos                                      |
-| Interacciones      | CSS puro, con equivalentes de foco y soporte de `prefers-reduced-motion`                |
-| Calidad            | Prettier, ESLint (JS, TS, Astro y accesibilidad), `astro check` y CI                    |
-| Hosting            | Vercel: producción desde `main` y una preview por cada PR                               |
-| Flujo              | Conventional Commits; correcciones con issue → branch → PR ([guía](../CONTRIBUTING.md)) |
+| Tema               | Decisión                                                                                                           |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Framework          | Astro 7 con salida estática                                                                                        |
+| Estilos            | Tailwind CSS v4, con los tokens del diseño en `@theme`                                                             |
+| Lenguaje           | TypeScript estricto (TS 6.0)                                                                                       |
+| Runtime y paquetes | Node 26 (mínimo 22.23.4) y pnpm 10                                                                                 |
+| Contenido          | Datos tipados en `src/data/`, sin CMS                                                                              |
+| Tipografía         | Autoalojada; la familia se identifica a partir de los PDFs (a simple vista, Inter)                                 |
+| Imágenes           | `astro:assets` con AVIF/WebP y tamaños responsivos                                                                 |
+| Interacciones      | Hovers en CSS y un módulo propio de 2 KB para el movimiento con el cursor, con soporte de `prefers-reduced-motion` |
+| Calidad            | Prettier, ESLint (JS, TS, Astro y accesibilidad), `astro check` y CI                                               |
+| Hosting            | Vercel: producción desde `main` y una preview por cada PR                                                          |
+| Flujo              | Conventional Commits; correcciones con issue → branch → PR ([guía](../CONTRIBUTING.md))                            |
 
 ## Detalle
 
@@ -64,11 +64,18 @@ Registro de las decisiones técnicas del proyecto, con el motivo de cada una y l
 
 - `<Image>` y `<Picture>` generan AVIF/WebP en varios tamaños con dimensiones explícitas, lo que evita saltos de layout.
 
-### 8. Interacciones en CSS
+### 8. Interacciones: CSS y un módulo chico de movimiento
 
-- Las 6 interacciones son transiciones de color, `transform` y desplazamientos: no hace falta JavaScript ni librerías de animación.
-- Los hovers son decorativos y están sobre elementos no interactivos, así que no se les agrega foco de teclado. Solo se activan con puntero (`@media (hover: hover)`) y con `prefers-reduced-motion` se desactivan rotaciones y desplazamientos.
-- Si el diseño suma animaciones más complejas (scroll, entrada de secciones), se evalúa en ese momento.
+- Los hovers del diseño son transiciones de color, `transform` y desplazamientos en CSS.
+- Desde el issue #13, un módulo propio (`src/scripts/movimiento.ts`, 2 KB comprimido) suma el movimiento que sigue al cursor:
+  - letras de los títulos que se inclinan de forma continua;
+  - fotos y cards que se inclinan en 3D;
+  - botones imantados;
+  - heroes con profundidad y luz.
+- El módulo es una mejora progresiva: sin JavaScript quedan los hovers de CSS. Solo anima `transform` y `opacity`, con un único `requestAnimationFrame` que se detiene cuando nada se mueve.
+- Los hovers son decorativos y están sobre elementos no interactivos, así que no se les agrega foco de teclado. El movimiento que sigue al cursor responde solo al mouse; en pantallas táctiles, los títulos reaccionan al tocar o deslizar el dedo.
+- Con `prefers-reduced-motion` no hay rotaciones ni desplazamientos y el módulo no se activa.
+- **Descartadas:** librerías como GSAP o Motion, que suman decenas de KB para efectos que se resuelven con un `requestAnimationFrame`.
 
 ### 9. Calidad automatizada
 
