@@ -61,7 +61,11 @@ import ListaProyectos from "./ListaProyectos.astro";
               </a>
             </div>
             {hito.complemento?.tipo === "imagen" && (
-              <div class="aspect-[4/3] w-full max-w-[453px] overflow-hidden border-6 border-carbon bg-piedra lg:mt-[3px]">
+              <div
+                class="relative aspect-[4/3] w-full max-w-[453px] overflow-hidden border-6 border-carbon bg-piedra lg:mt-[3px]"
+                data-inclinar="5"
+                data-brillo
+              >
                 <Image
                   src={hito.complemento.foto.src}
                   alt={hito.complemento.foto.alt}

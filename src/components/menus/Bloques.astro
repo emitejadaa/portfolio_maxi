@@ -25,6 +25,7 @@ const oscura = pestana.tema === "hide";
     {pestana.numeros.map((n) => (
       <li
         class:list={["px-[22px] py-5", tema.numeros.ancho, tema.numeros.card]}
+        data-inclinar="6"
       >
         <p class:list={["leading-[1.2]", tema.numeros.valor]}>{n.valor}</p>
         <p
@@ -47,7 +48,10 @@ const oscura = pestana.tema === "hide";
       </h2>
       <ul class="mt-6 grid gap-6 md:grid-cols-3">
         {pestana.partidos.items.map((partido) => (
-          <li class="flex flex-col border-3 border-carbon bg-hueso">
+          <li
+            class="flex flex-col border-3 border-carbon bg-hueso"
+            data-inclinar="3"
+          >
             <div class="relative border-b-3 border-carbon">
               <Image
                 src={partido.foto.src}

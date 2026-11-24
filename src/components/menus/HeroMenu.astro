@@ -212,7 +212,7 @@ const marcadorVolanta = {
       </div>
 
       {pestana.imagen && (
-        <div class="relative w-full max-w-[450px]">
+        <div class="relative w-full max-w-[450px]" data-inclinar="5">
           <div
             class:list={[
               "relative aspect-[450/337.5] overflow-hidden",
@@ -222,6 +222,7 @@ const marcadorVolanta = {
                 "border-8 border-lima bg-piedra shadow-[8px_8px_0_var(--color-naranja)]",
               t === "udesa" && "border-8 border-hueso bg-hueso",
             ]}
+            data-brillo
           >
             <Image
               src={pestana.imagen.src}
