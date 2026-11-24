@@ -1,5 +1,6 @@
 ---
 import { cierre, contacto } from "../data/portfolio";
+import TituloVivo from "./TituloVivo.astro";
 
 // Abre el redactor de Gmail con el destinatario y el asunto cargados: el mail
 // se escribe y se envía desde Gmail, el sitio no envía nada.
@@ -8,10 +9,21 @@ const enlaceGmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURICo
 
 <section aria-label="Cierre y contacto" class="bg-carbon">
   <div class="contenedor py-[110px] text-center max-sm:py-20">
-    <p class="text-cierre max-md:text-[3.25rem] max-sm:text-[2.75rem]">
-      <span class="block text-hueso">{cierre.frase}</span>
-      <span class="block text-lima">{cierre.remate}</span>
-    </p>
+    <!-- Cada línea toma el color de la otra al pasar el cursor -->
+    <TituloVivo
+      as="p"
+      lineas={[
+        {
+          texto: cierre.frase,
+          class: "[--acento:var(--color-lima)] [--base:var(--color-hueso)]",
+        },
+        {
+          texto: cierre.remate,
+          class: "[--acento:var(--color-hueso)] [--base:var(--color-lima)]",
+        },
+      ]}
+      class="text-cierre [--corrimiento:-0.08em] [--origen:85%] max-md:text-[3.25rem] max-sm:text-[2.75rem]"
+    />
     <div class="mt-14 flex flex-col items-center gap-4">
       <a
         href={enlaceGmail}

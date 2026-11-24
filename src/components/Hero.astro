@@ -1,8 +1,6 @@
 ---
 import { perfil } from "../data/portfolio";
-
-// El wordmark va en dos líneas, nombre y apellido, letra por letra
-const lineas = perfil.nombreCompleto.split(" ").map((palabra) => [...palabra]);
+import TituloVivo from "./TituloVivo.astro";
 ---
 
 <header class="relative bg-naranja text-hueso">
@@ -12,17 +10,20 @@ const lineas = perfil.nombreCompleto.split(" ").map((palabra) => [...palabra]);
   ></div>
   <div class="contenedor relative">
     <div class="@container px-6 pt-[58px] pb-[65px] max-sm:pt-9 max-sm:pb-12">
-      <h1 class="wordmark font-black" aria-label={perfil.nombreCompleto}>
-        {lineas.map((letras) => (
-          <span aria-hidden="true" class="linea">
-            {letras.map((letra) => (
-              <span class="letra">
-                <span class="glifo">{letra}</span>
-              </span>
-            ))}
-          </span>
-        ))}
-      </h1>
+      <!--
+        Nombre y apellido en dos líneas, con el mismo cuerpo para todas las
+        letras. "Maximiliano", la línea más larga, mide 6,16 em: el cuerpo se
+        ajusta al ancho para que entre siempre en una línea (unos 157 px en
+        desktop, casi el tamaño del "Maxi" del diseño). Con interlineado
+        0,94, la línea base queda al 88,7 % de la caja de cada letra. Los
+        márgenes conservan las medidas del diseño: las mayúsculas arrancan a
+        75 px del borde del hero y el filete queda 47 px debajo de la línea
+        base.
+      -->
+      <TituloVivo
+        lineas={perfil.nombreCompleto.split(" ")}
+        class="text-[length:min(10rem,16.2cqi)] leading-[0.94] font-black [--acento:var(--color-lima)] [--base:var(--color-hueso)] [--origen:88.7%]"
+      />
       <div aria-hidden="true" class="mt-[30px] h-[3px] bg-hueso"></div>
       <ul class="mt-[23px] flex flex-wrap gap-x-8 gap-y-2 max-sm:gap-x-6">
         {perfil.tags.map((tag) => (
@@ -38,67 +39,3 @@ const lineas = perfil.nombreCompleto.split(" ").map((palabra) => [...palabra]);
     </div>
   </div>
 </header>
-
-<style>
-  /*
-   * "Maximiliano", la línea más larga, mide 6,16 em: el cuerpo se ajusta al
-   * ancho disponible para que entre siempre en una línea. En desktop queda
-   * en unos 157 px, casi el tamaño del "Maxi" del diseño (160 px). Los
-   * márgenes conservan las medidas del diseño en desktop: las mayúsculas
-   * arrancan a 75 px del borde del hero y el filete queda 47 px debajo de
-   * la línea base.
-   */
-  .wordmark {
-    font-size: min(10rem, 16.2cqi);
-    line-height: 0.94;
-  }
-
-  .linea {
-    display: flex;
-    width: fit-content;
-  }
-
-  /*
-   * El contenedor de cada letra queda quieto y es el área de hover. Lo que
-   * se mueve es el glifo, así el hover no salta de una letra a otra
-   * mientras las letras se desplazan.
-   */
-  .letra {
-    display: inline-block;
-  }
-
-  .glifo {
-    display: inline-block;
-    /* Los glifos no reciben el puntero: si una letra se corre debajo del
-       cursor, el hover sigue en la letra que lo tenía. */
-    pointer-events: none;
-    /* Origen del glifo: borde izquierdo sobre la línea base, que con
-       interlineado 0,94 queda al 88,7 % del alto de la caja */
-    transform-origin: 0 88.7%;
-    transition:
-      transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-      color 0.2s ease;
-  }
-
-  /*
-   * Hover sobre cualquier letra (solo con puntero): la letra pasa a lima,
-   * rota −6° sobre su origen y se adelanta, y las que le siguen en su línea
-   * se corren hacia ella. Son las medidas del ejemplo de la "a" en
-   * Container.pdf.
-   */
-  @media (hover: hover) {
-    .letra:hover .glifo {
-      color: var(--color-lima);
-    }
-  }
-
-  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .letra:hover .glifo {
-      transform: translate(-0.056em, -0.0882em) rotate(-6deg);
-    }
-
-    .letra:hover ~ .letra .glifo {
-      transform: translateX(-0.19em);
-    }
-  }
-</style>
